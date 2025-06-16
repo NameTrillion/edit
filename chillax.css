@@ -942,8 +942,8 @@ html.theme-light {
 }
 
 #app-mount .info__2debe .line__2debe:last-child:after {
-    content: "ethicks " var(--cl-appearance) " 🎮";
-    display: block;
+    content: "ethicks " var(--cl-appearance) " 🎮" !important;
+    display: block !important;
 }
 
 /*custom bd window edit*/
