@@ -941,6 +941,12 @@ html.theme-light {
     --cl-appearance: "Light";
 }
 
+/* Hide original chillax text */
+#app-mount .info__2debe .line__2debe:last-child:before {
+    display: none !important;
+}
+
+/* Show your new text */
 #app-mount .info__2debe .line__2debe:last-child:after {
     content: "ethicks " var(--cl-appearance) " 🎮" !important;
     display: block !important;
