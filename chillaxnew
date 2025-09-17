@@ -853,9 +853,20 @@ html.theme-light {
     --cl-appearance: "Light";
 }
 
-#app-mount .info__2debe .line__2debe:last-child:after {
-    content: "ethicks " var(--cl-appearance) " 🎮";
-    display: block;
+
+.leading_c38106::before {
+    content: "‏‏‎ e t h i c k s" !important;
+    font-size: 12px;
+    font-weight: 900;
+    font-family: "Poiret one" !important;
+    background: var(--window-colour);
+    backdrop-filter: blur(var(--window-blur));
+    border-radius: 5px;
+    padding: 10px 11px 10px 7px;
+    margin-left: var(--window-margin);
+    pointer-events: all;
+    transition: 0.5s ease-in-out;
+    color: var(--text-primary);
 }
 
 /*custom bd window edit*/
