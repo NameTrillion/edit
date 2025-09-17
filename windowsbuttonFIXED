@@ -19,7 +19,7 @@
 }
 
 .leading_c38106:hover::before {
-    content: "‏‏‎ c h i l l a x";
+    content: "‏‏‎ e t h i c k s";
     letter-spacing: 2px;
 }
 
