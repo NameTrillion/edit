@@ -1,0 +1,3894 @@
+/* ==========================================================================
+   Nightfall — Red  ·  Modernized
+   Same brand identity (red/pink accent, dark surface, Inter type), refreshed
+   with a real tonal scale so surfaces, rows, and states are distinguishable,
+   richer depth via layered shadows, consistent hover/focus feedback, and a
+   couple of contrast fixes (stray blue-hued hover tint, low-contrast link
+   colors, white-on-white BBCode buttons).
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/variables.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/overallStyles.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/header.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/footer.css');
+@import url('https://gazellegames.net/static/styles/game_room/caticons.css');
+@import url('https://gazellegames.net/static/styles/game_room/webLinks.css');
+
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/homepage.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/torrentsBrowse.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/torrentsGames.css?x=20220523');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/bundles.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/requests.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/forums.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/rules.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/wiki.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/staff.css');
+
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/paloozaOverall.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/paloozaShop.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/paloozaInventory.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/paloozaCrafting.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/paloozaEquipment.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/paloozaTrading.css');
+
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/adventureSkills.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/adventureBackpack.css');
+
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/upload.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/profiles.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/clans.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/staffPages.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/miscPages.css');
+
+@import url('https://gazellegames.net/static/styles/game_room/screenSizes/mobile.css') screen and (max-width: 800px);
+@import url('https://gazellegames.net/static/styles/game_room/screenSizes/largeDesktop.css') screen and (min-width: 1400px);
+@import url('https://gazellegames.net/static/styles/game_room/screenSizes/middleDesktop.css') screen and (min-width: 801px) and (max-width: 1150px);
+@import url('https://gazellegames.net/static/styles/game_room/screenSizes/palooza.css');
+
+#header,
+#header *,
+#logo,
+#menu,
+#menu *,
+#searchbars,
+#searchbars *,
+#userinfo,
+#userinfo * {
+  animation: none !important;
+  background-image: none !important;
+  background-attachment: scroll !important;
+}
+
+#header::after,
+#header::before,
+#logo::after,
+#menu::after,
+#menu::before {
+  content: none !important;
+  display: none !important;
+}
+
+:root{
+
+  /* Surfaces — a real tonal scale so layers actually read as separate layers */
+  --bg-0:#0a0b0f;
+  --card:#15171d;
+  --card-2:#1c1f27;
+  --field-bg:#1a1c23;
+
+  --ink:#eef0f5; --ink-2:#b7bfcc; --ink-dim:#8891a0;
+
+  --accent-2:#e5456a;
+  --accent-2-bright:#ff6b8a;
+  --border:#2a2e38;
+  --shadow:0 14px 32px rgba(0,0,0,.45), 0 2px 8px rgba(0,0,0,.3);
+  --shadow-sm:0 4px 12px rgba(0,0,0,.35);
+  --shadow-glow:0 6px 18px rgba(229,69,106,.22);
+
+  --darkBlue:#14161c;
+  --darkBlue50:#101218;
+  --mediumBlue50:#15171d;
+  --mediumBlue: #e5456a;
+
+--white:#ffffff;
+--black:#000000;
+--lightBlue:#c6e6f6;
+--lightBlue30:#c6e6f64d;
+
+  --darkGreen:hsl(234, 0%, 100%);
+  --accent: #fff;
+
+  /* Row states — previously identical values, now genuinely distinguishable */
+  --rowA60: rgba(255,255,255,.03);
+  --rowB60: rgba(255,255,255,.055);
+  --rowAHover: rgba(229, 69, 106, .20);
+  --rowBHover: rgba(229, 69, 106, .28);
+  --rowa: #15171d;
+  --rowb: #1a1d24;
+
+  --darkPink: #C92020;
+  --darkRed: #BF6A6A;
+  --red: #DD3434;
+  --upVote: #e5456a;
+  --downVote: hsl(0, 0%, 49.4%);
+  --noVote: #b5b4c200;
+  --stickyBkg: #8b2040;
+  --label: rgba(238, 112, 133, .35);
+
+ --announce-text:#ee7085;
+
+  --rail-width:1060px;
+  --radius:12px; --radius-sm:8px; --pad:14px;
+
+  --logo-url:url('https://gazelle.games/static/brand/gazelle.svg');
+
+
+  --announce-bg:var(--bg-0);--announce-border:#ee7085; --announce-border-width: 1px;
+
+
+  --font:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, "Noto Sans", sans-serif;
+}
+
+    
+    ::selection {
+  background: var(--accent-2) !important;
+  color: #fff !important; 
+}
+
+/* Custom scrollbar — small polish, matches the rest of the palette */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-0); }
+::-webkit-scrollbar-thumb { background: var(--card-2); border-radius: 10px; border: 2px solid var(--bg-0); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-2); }
+html { scrollbar-color: var(--card-2) var(--bg-0); scrollbar-width: thin; }
+
+/* Consistent, visible focus state for keyboard users */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
+textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
+
+html,body{background:var(--bg-0) none!important; color:var(--ink); font:14px/1.55 var(--font); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+a{color:var(--accent); transition: color .15s ease;} a:hover{color:var(--accent-2); text-decoration:underline;}
+img{border-radius:8px;}
+
+.box, .thin .box, .sidebar .box, table{
+  background:var(--card)!important;
+  border:1px solid var(--border)!important;
+  border-radius:var(--radius); box-shadow:var(--shadow-sm);
+  color: #dadada;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.head, .colhead, .colhead_dark{
+  background:var(--card-2)!important; color:var(--ink)!important;
+  border-bottom:1px solid var(--border)!important; border-radius:var(--radius);
+  box-shadow: inset 0 -2px 0 rgba(229,69,106,.28);
+}
+.colhead_dark td:first-child { border-radius: var(--radius-sm) 0 0 0 !important; }
+.colhead_dark td:last-child  { border-radius: 0 var(--radius-sm) 0 0 !important; }
+.colhead_dark td[colspan]    { border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important; }
+
+#slides { display: none !important; }
+.pad{padding:var(--pad);}
+
+table{border-collapse:separate; border-spacing:0; width:100%;}
+th, td{padding:10px 12px; border-bottom:5px solid var(--border);}
+tr{background:var(--card)!important;}
+tr:hover td{background:rgba(229,69,106,.10)!important;}
+
+input[type="text"],input[type="search"],input[type="password"],input[type="number"],select,textarea{
+  background:var(--card) !important; color:var(--ink);
+  border:1px solid var(--border); border-radius:var(--radius-sm); padding:8px 10px;
+  border-color: #3a3f4a;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+input[type="text"]:focus,input[type="search"]:focus,input[type="password"]:focus,input[type="number"]:focus,select:focus,textarea:focus{
+  outline:none; border-color: var(--accent-2); box-shadow: 0 0 0 3px rgba(229,69,106,.18);
+}
+#header{
+  position:static!important; 
+  background:transparent!important; 
+  background-image:none!important;
+  display:flex; 
+  flex-direction:column; 
+  align-items:center;
+  min-height:280px;
+}
+#menu, #searchbars, #announcement, #announcements, #userinfo{
+  max-width:var(--rail-width); margin-left:auto; margin-right:auto;
+  background:var(--darkBlue)!important; border:1px solid var(--border); border-radius:var(--radius);
+  box-sizing:border-box; color:var(--ink);
+}
+
+#userinfo{order:1;}
+#logo{order:2;}
+#menu{order:3;}
+#searchbars{order:4;}
+#announcement, #announcements{order:5;}
+
+#logo{
+  display:flex!important; justify-content:center; align-items:center;
+  height:96px; margin:6px auto 4px;
+  background:none!important; border:0!important;
+  max-width:var(--rail-width); position:relative;
+}
+#logo img,
+#logo .power_logo,
+#logo .power_logo2 { display: none !important; }
+#logo::before{
+  content:""; display:block; width:240px; height:72px;
+  background:var(--logo-url) center/contain no-repeat; filter:drop-shadow(0 4px 10px rgba(0,0,0,.35));
+}
+#logo a{position:absolute; inset:0;}
+#header > a[href$="index.php"]{display:none!important;}
+#userinfo > a[href$="index.php"]{display:none!important;}
+#header *{ float: none !important; }
+#header .submit, #header form, #header ul{ margin:0 !important; }
+
+#userinfo{
+  width:100%; padding:6px 10px; margin:0 0 6px!important;
+  position:relative!important; z-index:6!important; font-family: var(--font);
+  overflow: visible !important; 
+}
+#userinfo #userinfo_username,
+#userinfo #userinfo_stats,
+#userinfo #userinfo_minor{display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
+
+#userinfo #userinfo_username .donateico {
+  position: static !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  order: 999 !important;
+}
+
+#userinfo .sub {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+}
+#userinfo .username, #userinfo a{ text-shadow:none!important; }
+
+#menu{
+  padding:8px var(--pad); margin:0 0 6px!important;
+  position:relative; z-index:0; font-family: var(--font); font-weight: 700;
+}
+#menu ul{display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center; margin:0; padding:0;}
+#menu li{list-style:none;}
+#menu li a{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:34px; padding:0 12px; line-height:1; white-space:nowrap; border-radius:10px;
+  transition: background-color .15s ease;
+}
+#menu li a:hover{background:#e5456a3d;}
+
+#searchbars{
+  margin:0 0 8px!important;
+  padding:8px var(--pad)!important;
+  display:flex; justify-content:center; align-items:center; align-self:center; position:absolute; z-index:5; font-family: var(--font);
+}
+#searchbars ul{
+  display:flex; flex-wrap:nowrap; gap:12px; justify-content:center;
+  margin:0; padding:0; list-style:none; max-width:100%;
+}
+#searchbars li{list-style:none;}
+#searchbars .search_form{display:flex; align-items:center; gap:6px;}
+#searchbars .search_form input[type="text"],
+#searchbars .search_form input[type="search"]{
+  height:30px; padding:6px 0px; border-radius:8px;
+  width:clamp(140px, 11vw, 190px); font-family: var(--font);
+}
+
+#announcement, #announcements{
+  position:relative; z-index:4;
+  margin:2px 0 12px!important; padding:8px 12px!important;
+  box-shadow:var(--shadow);
+  background:var(--announce-bg)!important; color:var(--announce-text)!important;
+  border-color:var(--announce-border)!important; border-width:var(--announce-border-width)!important;
+  font-size:13px; line-height:1.4; font-family: var(--font);
+  display:block;
+}
+#announcement:empty,
+#announcements:empty{
+  display:none !important;
+}
+#announcement .head, #announcements .head,
+#announcement .colhead, #announcements .colhead,
+#announcement .colhead_dark, #announcements .colhead_dark,
+#announcement .box, #announcements .box,
+#announcement .pad, #announcements .pad{
+  background:transparent!important; color:inherit!important; border-color:transparent!important;
+}
+#announcement a, #announcements a{color:var(--accent-2)!important; font-weight:600;}
+#announcement a:hover, #announcements a:hover{color:var(--accent-2-bright)!important;}
+
+#content{position:relative; z-index:1; font-family: var(--font);}
+
+.sidebar{float:right!important; width:320px!important;}
+.main_column_bg{float:none!important; width:auto!important; margin-right:336px!important; overflow:hidden!important;}
+.main_column_bg .main_column{float:none!important; width:auto!important;}
+.thin::after{content:""; display:block; clear:both;}
+
+.sidebar .box{margin:0 0 12px 0; padding:0; background:var(--card)!important; border-color:var(--border)!important;}
+.sidebar .box .head, .sidebar .box .colhead, .sidebar .box .colhead_dark{margin:0; padding:10px 12px; border-radius:0; background:var(--card-2)!important;}
+.sidebar .box .pad, .sidebar .box > ul.stats, .sidebar .box > ul.nobullet, .sidebar .box .nobullet{margin:0; padding:10px 12px;}
+.sidebar .box .stats li{list-style:none; margin:0; padding:6px 0;}
+
+#freeleech .stats{padding:8px 12px!important;}
+#freeleech .group_torrent{border-left:none!important; padding-left:0!important; margin-left:0!important;}
+#freeleech .group_torrent span:first-child{margin-right:6px;}
+
+.windows {
+  background: url('https://gazelle.games/static/brand/windows-icon.svg') center/contain no-repeat !important;
+}
+
+#torrents #content .checked{
+  background: url('https://gazelle.games/static/brand/check.svg') no-repeat;
+  width:13px; height:20px;
+  filter: hue-rotate(70deg);
+}
+#torrents #content .notchecked { display: none !important; }
+
+#requests_list .sticky td:first-child::before,
+.sticky #displayname::before{
+  content: "";
+  background: url('https://gazelle.games/static/brand/sticky.svg') center/contain no-repeat !important;
+  width: 15px !important;
+  height: 15px !important;
+  display: inline-block !important;
+  margin-right: 5px;
+  padding-top: 2px !important; 
+  vertical-align: baseline !important; 
+  line-height: 1 !important; 
+  position: relative !important;
+  top: 0.1em !important; 
+  filter: hue-rotate(70deg) drop-shadow(0px 2px 3px var(--black));
+}
+
+.torrent_table a.addbookmark{
+  background: url('https://gazelle.games/static/brand/rbookmark.svg') center/contain no-repeat !important;
+  width: 18px !important;          
+  height: 18px !important;
+  display: inline-block !important;
+  vertical-align: top !important; 
+  padding-left: 0 !important;      
+  padding-bottom: 0 !important;
+  margin-top: 14px;                
+  text-indent: -5000px;            
+  color: var(--black);
+  filter: hue-rotate(70deg);
+}
+
+.torrent_table a.removebookmark{
+  background: url('https://gazelle.games/static/brand/bookmark.svg') center/contain no-repeat !important;
+  width: 18px !important;          
+  height: 18px !important;
+  display: inline-block !important;
+  vertical-align: top !important; 
+  padding-left: 0 !important;      
+  padding-bottom: 0 !important;
+  margin-top: 14px;                
+  text-indent: -5000px;            
+  color: var(--black);
+  filter: hue-rotate(70deg);
+}
+
+.show_torrents_link {
+  display: inline-block !important;
+  width: 15px !important;          
+  height: 15px !important;
+  background: center center no-repeat
+              url("https://gazelle.games/static/brand/expand.svg") !important;
+  background-size: 25px 25px !important; 
+  padding-left: 0 !important;      
+  text-indent: -9999px !important;            
+  position: relative !important;
+  right: 8px !important; 
+  left: 8px !important; 
+  top: 8px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  
+  font-style: normal !important;
+  font-weight: normal !important;
+  text-decoration: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  filter: hue-rotate(70deg);
+}
+
+#forums #content .thin td.unread {
+  background-image: url("https://gazelle.games/static/brand/unread.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position: 50% !important;
+  background-size: 8px 8px !important;
+  width: 10px !important;
+  height: 10px !important;
+  filter: hue-rotate(70deg);
+}
+
+#forums #content .thin td.read {
+  background: none !important;
+  width: 2px !important;
+  height: 2px !important;
+}
+
+.last_read {
+  background-image: url("https://gazelle.games/static/brand/lr.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 15px 15px !important;
+  width: 15px !important;
+  height: 13px !important;
+  margin-left: 8px !important;
+  filter: hue-rotate(70deg);
+}
+
+#forums #content .thin td.read_locked,
+#forums #content .thin td.read_locked_sticky {
+  background-repeat: no-repeat !important;
+  background-position: 50% !important;
+  background-size: 12px 12px !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+#forums #content .thin td.read_locked {
+  background-image: url("https://gazelle.games/static/brand/locked.svg") !important;
+  filter: hue-rotate(70deg);
+}
+
+body #wrapper #forums #content .thin td.read_locked_sticky,
+body #wrapper #forums #content td[class*="locked"][class*="sticky"],
+#forums #content .thin td.read_locked_sticky,
+#forums #content .thin td[class*="locked"][class*="sticky"] {
+  background: url("https://gazelle.games/static/brand/stickyunread.svg") no-repeat 50% !important;
+  background-size: 12px 12px !important;
+  filter: hue-rotate(70deg);
+}
+
+#forums #content .thin td.unread_sticky {
+  background-image: url("https://gazelle.games/static/brand/stickyunread.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position: 50% !important;
+  background-size: 8px 8px !important;
+  width: 18px !important;
+  height: 18px !important;
+  filter: hue-rotate(70deg);
+}
+
+#forums #content .thin td.read_sticky {
+  background-image: url("https://gazelle.games/static/brand/sticky.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position: 50% !important;
+  background-size: 8px 8px !important;
+  width: 18px !important;
+  height: 18px !important;
+  filter: hue-rotate(70deg);
+}
+
+tr.participated > td:nth-child(2)::before {
+  background: url("https://gazelle.games/static/brand/participated.svg") no-repeat center / contain !important;
+  content: '' !important;
+  width: 12px !important;
+  height: 12px !important;
+  float: left !important;
+  margin-right: 7px !important;
+  margin-top: 2px !important;
+  opacity: 1;
+  filter: hue-rotate(70deg);
+}
+
+.prev, .next {
+  background-size: 16px 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+  filter: hue-rotate(70deg);
+}
+.prev {
+  background: url("https://gazelle.games/static/brand/rl.svg") no-repeat center center !important;
+  float: left !important;
+}
+.next {
+  background: url("https://gazelle.games/static/brand/lr.svg") no-repeat center center !important;
+  float: right !important;
+}
+
+h2 {
+  padding: 0px !important;
+  margin-left: 5px !important;
+  border-bottom: 0px solid var(--lightBlue30) !important;
+  color: var(--accent) !important;
+  font-size: 24px !important;     
+  font-weight: 800 !important;    
+  letter-spacing: 0.3px !important;
+  line-height: 1.2em !important;
+}
+
+h3 {
+  padding: 0px !important;
+  margin-left: 5px !important;
+  border-bottom: 0px solid var(--lightBlue30) !important;
+  color: var(--accent) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px !important;
+}
+
+.linkbox strong {
+  color: var(--accent-2)!important;
+}
+
+.linkbox a strong {
+  color: var(--white) !important;
+}
+
+.torrent_table td#user_rating_icon a {
+  height: 17px !important;
+  width: 17px !important;
+  background: url('https://gazelle.games/static/brand/rating.svg') center/contain no-repeat !important;
+  display: block !important;
+  margin: 0 auto !important;
+  filter: hue-rotate(70deg);
+}
+
+.cats_ost {
+  width: 28px !important;
+  height: 28px !important;
+  display: inline-block !important;
+  vertical-align: top !important; 
+  background: url('https://gazelle.games/static/brand/music.svg') center/contain no-repeat !important;
+  margin: 0 !important; 
+  filter: hue-rotate(70deg);
+}
+
+.cats_ebook,
+.cats_ebooks {
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  display: inline-block !important;
+  vertical-align: top !important; 
+  background: url('https://gazelle.games/static/brand/book.svg') center/contain no-repeat !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  line-height: var(--icon-size) !important; 
+  margin: 0 !important; 
+  padding: 0 !important; 
+  filter: hue-rotate(70deg);
+}
+
+#seeders_icon img {
+  content: url('https://gazelle.games/static/brand/up.svg') !important;
+  width: 15px !important;
+  height: 15px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  filter: hue-rotate(70deg);
+}
+
+#leechers_icon img {
+  content: url('https://gazelle.games/static/brand/down.svg') !important;
+  width: 15px !important;
+  height: 15px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  filter: hue-rotate(70deg);
+}
+
+#userinfo_minor {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  order: 1 !important; 
+  margin-right: 15px !important;
+  background-color: transparent !important;
+  top: 0px !important;
+  left: 0px !important;
+  transform: none !important;
+  transition: none !important;
+  padding: 0 !important;
+  
+  overflow: visible !important;
+}
+
+#userinfo_minor:hover {
+  padding-top: 0px;
+  padding-top: 0px;
+  }
+
+#userinfo_minor > li {
+  display: none !important;
+}
+
+#userinfo_minor::before {
+  content: "" !important;
+  display: block !important;
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  max-width: 24px !important;
+  max-height: 24px !important;
+  background: url("https://gazelle.games/static/brand/notification.svg") no-repeat center center !important;
+  background-size: contain !important;
+  background-position: center center !important;
+  cursor: pointer !important;
+  filter: hue-rotate(70deg);
+  position: relative !important;
+  z-index: 1 !important;
+  flex-shrink: 0 !important;
+  transform: none !important;
+  transition: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+#userinfo_minor:hover::before,
+#userinfo_minor::before {
+  background-position: center center !important;
+  transform: translate(0, 0) !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 24px !important;
+  height: 24px !important;
+  background-size: contain !important;
+}
+
+#userinfo_minor .notification_bubble.hidden,
+#userinfo_minor:hover .notification_bubble.hidden {
+  display: none !important;
+}
+#userinfo_minor .notification_bubble:not(.hidden),
+#userinfo_minor:hover .notification_bubble:not(.hidden) {
+  position: absolute !important;
+  top: -6px !important;
+  left: 18px !important;
+  z-index: 10000 !important;
+  display: block !important;
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  background-color: var(--accent-2) !important;
+  border-radius: 50% !important;
+  text-align: center !important;
+  line-height: 18px !important;
+  font-size: 11px !important;
+  color: white !important;
+  font-weight: bold !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  transform: translate(0, 0) !important;
+  transition: none !important;
+  margin: 0 !important;
+}
+
+#userinfo_minor:hover {
+  z-index: 1000 !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: translate(0, 0) !important;
+  transition: none !important;
+  padding: 0 !important;
+  padding-bottom: 8px !important; 
+  margin: 0 15px 0 0 !important;
+}
+
+#userinfo_minor:hover::after,
+#userinfo_minor:hover > li,
+#userinfo_minor:hover > li:hover {
+  display: block !important;
+}
+
+#userinfo_minor:hover::after {
+  content: "" !important;
+  position: absolute !important;
+  top: -10px !important; 
+  left: 0 !important;
+  width: 219px !important;
+  min-height: calc(342px + 10px + 24px + 2px) !important; 
+  background: var(--card) !important; 
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow) !important;
+  z-index: 998 !important;
+  pointer-events: auto !important; 
+}
+
+#userinfo_minor:hover > li {
+  display: block !important;
+  position: absolute !important;
+  top: calc(24px + 2px + 8px) !important; 
+  left: 8px !important; 
+  width: calc(219px - 16px) !important; 
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  z-index: 1000 !important;
+  pointer-events: auto !important;
+}
+
+#userinfo_minor:hover > li:nth-of-type(1) { top: calc(24px + 8px + 8px) !important; }
+#userinfo_minor:hover > li:nth-of-type(2) { top: calc(24px + 8px + 8px + 36px * 1) !important; }
+#userinfo_minor:hover > li:nth-of-type(3) { top: calc(24px + 8px + 8px + 36px * 2) !important; }
+#userinfo_minor:hover > li:nth-of-type(4) { top: calc(24px + 8px + 8px + 36px * 3) !important; }
+#userinfo_minor:hover > li:nth-of-type(5) { top: calc(24px + 8px + 8px + 36px * 4) !important; }
+#userinfo_minor:hover > li:nth-of-type(6) { top: calc(24px + 8px + 8px + 36px * 5) !important; }
+#userinfo_minor:hover > li:nth-of-type(7) { top: calc(24px + 8px + 8px + 36px * 6) !important; }
+#userinfo_minor:hover > li:nth-of-type(8) { top: calc(24px + 8px + 8px + 36px * 7) !important; }
+#userinfo_minor:hover > li:nth-of-type(9) { top: calc(24px + 8px + 8px + 36px * 8) !important; }
+
+#userinfo_minor:hover > li > a {
+  display: block !important;
+  width: 100% !important;
+  color: var(--ink) !important;
+  text-decoration: none !important;
+  padding: 8px 12px !important;
+  margin: 2px 0 !important;
+  border-radius: 4px !important;
+  background-color: transparent !important;
+  transition: background-color 0.2s ease !important;
+}
+
+#userinfo_minor:hover > li > a:hover {
+  background-color: var(--card-2) !important;
+  color: var(--accent-2) !important;
+}
+
+#userinfo_minor:hover > li,
+#userinfo_minor:hover > li a,
+#userinfo_minor:hover > li:hover {
+  pointer-events: auto !important;
+}
+
+:root{ --fl-left-gap: 78px; }
+#freeleech ul.nobullet li.group_torrent{
+  position: relative; display: flex; align-items: center; gap: .5rem;
+  white-space: nowrap; overflow: hidden; border-radius: 6px;
+}
+#freeleech ul.nobullet li.group_torrent .tor_size{ order:1; flex:0 0 auto; color:var(--accent-2); }
+#freeleech ul.nobullet li.group_torrent .platform{ order:2; flex:0 0 auto; color:var(--ink); }
+#freeleech ul.nobullet li.group_torrent > a{
+  order:3; flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis;
+  color:var(--ink); text-decoration:none; position:relative; display:inline-block;
+  margin-left: calc(-1 * var(--fl-left-gap)); padding-left: var(--fl-left-gap); z-index:1;
+}
+#freeleech ul.nobullet li.group_torrent:hover{ background: rgba(255,255,255,.06); }
+#freeleech ul.nobullet li.group_torrent:hover > a{ color: var(--accent-2); text-decoration: underline; }
+#freeleech ul.nobullet li.group_torrent:hover > a,
+#freeleech ul.nobullet li.group_torrent:hover .platform { color: var(--accent-2); text-decoration: underline; }
+
+#freeleech .tor_info{ display: none !important; }
+
+@media screen and (min-width: 1400px){
+  
+  #polcont,
+  #dailygazelle,
+  #blogposts,
+  #slides,
+  #stats,
+  #upcoming_calendar{
+    width: 320px !important;
+  }
+
+  
+  .sidebar #freeleech{
+    width: 100% !important;
+  }
+}
+
+[id^="news"] > div:nth-child(1) > strong:nth-child(1) {
+  font-size: 22px;
+  line-height: 22px;
+  font-weight: 900;
+}
+
+#freeleech > div:nth-child(1) > span:nth-child(1),
+#upcoming_calendar > div:nth-child(1) > a:nth-child(1),
+#blogposts > div:nth-child(1) > a:nth-child(1),
+#dailygazelle > div:nth-child(1) > a:nth-child(1),
+.staff_pick_head > li:nth-child(1),
+.pollhead > li:nth-child(1),
+.statistics_head > li:nth-child(1) {
+  font-size: 19px;
+  line-height: 22px;
+  font-weight: 300;
+}
+#freeleech > div:nth-child(1) > span:nth-child(1) { font-style: normal; }
+.statistics_head > li:nth-child(1) { margin-top: 0px; }
+#polcont { margin-top: 20px; }
+#stats { margin-top: 10px; }
+#dailygazelle { margin-right: 0px; }
+#slides { margin-left: 0px; }
+#blogposts { margin-left: 0px; }
+#upcoming_calendar { margin-right: 0px; }
+
+[style*="Super Mario"], [style*="Mario 256"] {
+  font-family: var(--font) !important;
+}
+
+#torrents .nobr.userrating,
+#torrents .userrating,
+#torrents #upvote,
+#torrents #downvote,
+.userrating,
+#upvote,
+#downvote {
+  font-family: var(--font) !important;
+  font-weight: 700 !important;   
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  text-shadow: none !important;
+  line-height: 1 !important;
+}
+
+#torrents .userrating span,
+.userrating span {
+  font-family: var(--font) !important;
+}
+
+.mario, .supermario, .font-mario, .mario256 {
+  font-family: var(--font) !important;
+}
+
+#torrents table.torrent_table {
+  border-collapse: separate !important;
+  border-spacing: 0 6px !important;
+}
+
+#torrents table.torrent_table tr:is(.rowa,.rowb,.row_a,.row_b):has(a.addbookmark) > td {
+  background: var(--bg-0) !important; 
+}
+
+#torrents table.torrent_table td.cats_col {
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+
+#torrents table.torrent_table tr:is(.rowa,.rowb,.row_a,.row_b):not(:has(a.addbookmark)) > td {
+  height: auto !important;
+  line-height: normal !important;
+
+  background: var(--card) !important;
+}
+
+#torrents table.torrent_table tr:is(.rowa,.rowb,.row_a,.row_b):has(a.addbookmark) > td {
+  border-top: 1px solid var(--border) !important;
+  border-bottom: 1px solid var(--border) !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-radius: 0 !important;
+}
+#torrents table.torrent_table tr:is(.rowa,.rowb,.row_a,.row_b):has(a.addbookmark) > td:first-child {
+  border-left: 1px solid var(--border) !important;
+  border-top-left-radius: var(--radius-sm) !important;
+  border-bottom-left-radius: var(--radius-sm) !important;
+  overflow: visible !important;
+}
+#torrents table.torrent_table tr:is(.rowa,.rowb,.row_a,.row_b):has(a.addbookmark) > td:last-child {
+  border-right: 1px solid var(--border) !important;
+  border-top-right-radius: var(--radius-sm) !important;
+  border-bottom-right-radius: var(--radius-sm) !important;
+  overflow: visible !important;
+}
+
+#torrents table.torrent_table tr:is(.rowa,.rowb,.row_a,.row_b):has(a.addbookmark):hover > td,
+#torrents table.torrent_table tr:is(.rowa,.rowb,.row_a,.row_b):has(a.removebookmark):hover > td,
+#torrents table.torrent_table tr:is(.rowa,.rowb,.row_a,.row_b):has(a.addbookmark):hover > td:first-child,
+#torrents table.torrent_table tr:is(.rowa,.rowb,.row_a,.row_b):has(a.removebookmark):hover > td:first-child {
+  background: rgba(229,69,106,.10) !important;
+  background-clip: border-box !important; 
+  background-origin: border-box !important;
+}
+
+#displayname .tags_ratings {
+  
+  margin-right: calc(18px + 8px);
+}
+
+#displayname { position: relative; }
+
+#displayname > span[style*="float:right"] {
+  float: none !important;
+  position: absolute;
+  right: 8px;           
+  top: 46%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  height: 18px;         
+}
+
+#displayname > span[style*="float:right"] a.addbookmark,
+#displayname [id^="bookmarklink_torrent_"] {
+  display: inline-block;
+}
+
+.freeleech_label {
+  color: var(--accent-2) !important; 
+  font-weight: 700 !important;
+}
+
+.freeleech_label {
+  color: var(--accent-2) !important; 
+  font-weight: 900 !important;
+}
+
+#color_seeding, #color_seeding .torrent_info_tags, #color_seeding a {
+  color: #48ff6a !important; 
+}
+
+#color_downloaded, #color_downloaded .torrent_info_tags, #color_downloaded a {
+  color: #786768 !important; 
+}
+
+#color_snatched,
+#color_snatched .torrent_info_tags,
+#color_snatched a {
+  color: var(--accent-2) !important; 
+}
+
+.edition_info {
+  background: var(--card-2) !important;
+  font-weight: 900 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.2px;
+  cursor: pointer !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 30px !important;
+  padding-bottom: 12px !important;
+  transition: background-color .15s ease, color .15s ease;
+}
+
+body:has(#sidebar_group_info) #torrents table.torrent_table > tbody > tr.group_torrent:has(.edition_info) > td.edition_info,
+body:has(#sidebar_group_info) #torrents table.torrent_table > tbody > tr.group_torrent:has(td.edition_info) > td.edition_info,
+body:has(#sidebar_group_info) #torrents table.torrent_table tbody tr.group_torrent td.edition_info {
+  padding-top: 70px !important;
+  padding-bottom: 12px !important;
+}
+
+body:has(#sidebar_group_info) #torrents table.torrent_table > tbody > tr.group_torrent:first-child:has(.edition_info) > td.edition_info,
+body:has(#sidebar_group_info) #torrents table.torrent_table > tbody > tr.group_torrent:first-child:has(td.edition_info) > td.edition_info,
+body:has(#sidebar_group_info) #torrents table.torrent_table tbody tr.group_torrent:first-child td.edition_info {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+.edition_info:hover {
+  background: #1a2127 !important;
+  color: var(--accent) !important;
+}
+
+tr.group_torrent > td > strong > a,
+tr.group_torrent:nth-child(54) > td:nth-child(3) > strong:nth-child(1) > a:nth-child(1) {
+  text-shadow: none !important;
+}
+
+.edition_info a,
+td.edition_info a,
+.edition_info > a,
+.edition_info strong + a,
+.edition_info a:first-child,
+tr.group_torrent td.edition_info a,
+table.torrent_table td.edition_info a,
+#torrents table.torrent_table td.edition_info a,
+body:has(#sidebar_group_info) #torrents table.torrent_table td.edition_info a {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  margin-right: 8px !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+  text-indent: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: none !important;
+  position: static !important;
+  max-width: none !important;
+  overflow: visible !important;
+  white-space: normal !important;
+}
+
+.global_buffs .color_yellow .buff_text {
+  color: var(--accent-2) !important;     
+  text-align: center !important;
+  text-shadow: none !important;
+}
+
+.items_style {
+  left: 10px !important;
+  background-color: rgba(229,69,106,.07) !important;
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.global_buffs .color_yellow .fa {
+  color: var(--accent) !important;     
+}
+
+.global_buffs .fa::before,
+.global_buffs .individual_buff .fa::before,
+.global_buffs .fa-bomb::before,
+.global_buffs .fa-gift::before,
+.global_buffs .fa-star::before,
+.global_buffs [class*="fa-"]::before {
+  content: none !important;
+  display: none !important;
+}
+
+.global_buffs > div {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 4px !important;
+  text-align: center !important;
+  flex-shrink: 0 !important;
+}
+
+.items_style .global_buffs,
+.global_buffs .color_yellow .buff_text {
+  filter: drop-shadow(0 0 4px rgba(4, 0, 255, 0));
+}
+
+#forums #content .thin tr td.read ~ td,
+#forums #content .thin tr td.read_locked ~ td {
+  opacity: 0.2 !important;
+}
+
+#forums #content .thin tr td.read,
+#forums #content .thin tr td.read_locked {
+  opacity: 0.2 !important;
+}
+
+#forums #content .thin tr:hover td.read ~ td,
+#forums #content .thin tr:hover td.read_locked ~ td,
+#forums #content .thin tr:hover td.read,
+#forums #content .thin tr:hover td.read_locked {
+  opacity: 1 !important;
+}
+
+#forums #content .thin tr td.unread ~ td {
+  color: var(--ink) !important;
+  font-weight: 600 !important;
+}
+
+.r00,
+.r01,
+.r02,
+.r03 {
+  color: #ee7085 !important; 
+}
+
+.rating_container {
+  background-color: #fff0 !important;   
+  color: var(--accent-2) !important;              
+  border: 1px solid var(--accent-2) !important;   
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius:5px !important;          
+  padding: 0px 7px !important;            
+}
+
+.torrent_table a[href*="edit"] {
+  font-size: 0.9em !important;
+  font-weight: normal !important;
+}
+
+    
+
+.filter_torrents .submit input {
+  float: right !important;
+  right: 10px !important;
+  position: relative !important;
+  margin: 10px 6px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  height: 30px !important;
+  min-width: 70px !important;
+  max-width: 100% !important;
+  border-radius: 5px !important;
+  vertical-align: middle !important;
+  cursor: pointer !important;
+  transition: 0.2s ease-in-out !important;
+}
+
+.filter_torrents .submit input[value="Filter Torrents"] {
+  background: var(--accent-2) !important;
+  color: var(--white) !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(229,69,106,.28) !important;
+}
+.filter_torrents .submit input[value="Filter Torrents"]:hover {
+  filter: brightness(1.15) !important;
+}
+
+.filter_torrents .submit input[value="Reset"],
+.filter_torrents .submit input[value="Make Default"],
+.filter_torrents .submit input[value="Clear Default"] {
+  background: transparent !important;
+  color: var(--accent-2) !important;
+  border: 1px solid var(--accent-2) !important;
+  box-shadow: none !important;
+}
+.filter_torrents .submit input[value="Reset"]:hover,
+.filter_torrents .submit input[value="Clear Default"]:hover {
+  background: rgba(229,69,106,0.1) !important; 
+}
+
+#torrents input[type="submit"][value="Search!"],
+#torrents button[type="submit"] {
+  background: var(--accent-2) !important;
+  color: var(--white) !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(229,69,106,.28) !important;
+  border-radius: 5px !important;
+  padding: 0 10px !important;
+  height: 30px !important;
+  cursor: pointer !important;
+  transition: 0.2s ease-in-out !important;
+}
+
+#torrents input[type="submit"][value="Search!"]:hover,
+#torrents button[type="submit"]:hover {
+  filter: brightness(1.15) !important;
+}
+
+#torrents tr:not(:has(a.addbookmark)):not(:has(a.removebookmark)):hover td,
+#torrents table.torrent_table tr:not(:has(a.addbookmark)):not(:has(a.removebookmark)):hover > td,
+#torrents .torrent_table tbody tr:not(:has(a.addbookmark)):not(:has(a.removebookmark)):hover > td,
+#torrents .torrent_table tr.group:not(:has(a.addbookmark)):not(:has(a.removebookmark)):hover > td,
+#torrents .torrent_table tr.group_torrent:not(:has(a.addbookmark)):not(:has(a.removebookmark)):hover > td {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+    
+
+    
+.filter_torrents h3 {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  margin: 10px 0 12px 10px !important;
+  padding: 0 !important;
+  width: auto !important;
+
+  
+  font-size: 22px !important;
+  line-height: 1.1em;
+  font-weight: 700 !important;
+  color: var(--accent) !important;
+  border: none !important;
+  background: transparent !important;
+  letter-spacing: 0.3px !important;
+}
+
+*,
+*:before,
+*:after {
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, "Noto Sans", sans-serif !important;
+}
+
+optgroup {
+  background-color: var(--darkBlue) !important;   
+  color: var(--accent) !important;              
+  font-weight: 600 !important;
+  font-family: var(--font) !important;
+  padding: 4px 6px !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.wiki_index .wiki_article strong {
+  background-color: var(--darkBlue) !important; 
+  color: var(--white) !important;                 
+  font-size: 1em !important;
+  font-weight: 600 !important;
+  padding: 5px 8px !important;
+  border-radius: 5px !important;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  display: inline-block !important;
+}
+
+.wiki_index .wiki_article strong:hover {
+  filter: brightness(1.15) !important;
+  box-shadow: 0 0 6px rgba(229, 69, 106, 0.4) !important; 
+}
+
+.box_gold table {
+width: 310px;
+height: 210px;
+}
+#user .box_gold td.label {
+background-color: rgba(0, 0, 0, 0);
+}
+
+.box_gold tr.total td {
+  border-top: 1px solid var(--accent-2);
+    }
+
+#torrents form[name="filter"] table {
+  width: 50% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 6px !important;
+}
+
+#torrents form[name="filter"] td {
+  vertical-align: middle !important;
+  padding: 4px 8px !important;
+  border: none !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+  font-family: var(--font) !important;
+}
+
+#torrents form[name="filter"] td.label {
+  text-align: right !important;
+  font-weight: 600 !important;
+  color: var(--ink-2) !important;
+  white-space: nowrap !important;
+  width: 10px !important;
+}
+
+#torrents form[name="filter"] input[type="text"],
+#torrents form[name="filter"] input[type="search"],
+#torrents form[name="filter"] select,
+#torrents form[name="filter"] textarea {
+  width: 100% !important;
+  min-width: 100px !important;
+  max-width: 200px !important;
+  min-height: 30px !important;
+  background: #26282e !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  padding: 6px 8px !important;
+  box-sizing: border-box !important;
+  font-family: var(--font) !important;
+  font-size: 14px !important;
+}
+
+#torrents form[name="filter"] td.label + td br,
+#torrents form[name="filter"] td.label + td small,
+#torrents form[name="filter"] td.label + td font,
+#torrents form[name="filter"] td.label + td span,
+#torrents form[name="filter"] td.label + td::after,
+#torrents form[name="filter"] td.label + td::before {
+  display: none !important;
+}
+
+#torrents form[name="filter"] table,
+#torrents table.cat_list,
+#torrents #taglist {
+  display: block !important;       
+  width: 99.5% !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+#torrents table.cat_list:nth-child(4) {
+  margin-bottom: 20px !important;
+}
+
+#torrents table + table {
+  margin-top: 10px !important;
+}
+
+#torrents form[name="filter"] tr:has(> td.label + td + td.label + td + td.label + td) td {
+  vertical-align: middle !important;
+}
+
+#torrents form[name="filter"] tr:has(> td.label + td + td.label + td + td.label + td) input.smallest {
+  width: 90px !important;         
+  height: 30px !important;        
+  display: inline-block !important;
+  margin-right: 14px !important;  
+}
+
+#torrents form[name="filter"] tr:has(> td.label + td + td.label + td + td.label + td) td.label {
+  white-space: nowrap !important;
+  padding-right: 8px !important;
+}
+
+#torrents form[name="filter"] tr td {
+  vertical-align: middle !important;
+}
+
+#torrents form[name="filter"] input.smallest {
+  width: 90px !important;
+  height: 30px !important;
+  line-height: 00px !important;
+  margin-right: 0px !important;
+  position: relative !important;
+  top: 0px !important;  
+}
+
+#torrents form[name="filter"] td.label {
+  padding-right: 0px !important;
+}
+
+#torrents form[name="filter"] input[type="checkbox"] {
+  
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+
+  width: 16px !important;
+  height: 16px !important;
+  border: 1px solid var(--accent-2) !important;  
+  border-radius: 4px !important;
+  background: transparent !important;
+  cursor: pointer !important;
+  position: relative !important;
+  vertical-align: middle !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+#torrents form[name="filter"] input[type="checkbox"]:checked {
+  background-color: var(--accent-2) !important;   
+  border-color: var(--accent-2) !important;
+  box-shadow: 0 0 6px rgba(229, 69, 106, 0.4) !important;
+}
+
+#torrents form[name="filter"] input[type="checkbox"]:hover {
+  filter: brightness(1.15) !important;
+}
+
+#torrents form[name="filter"] input[type="radio"] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+
+  width: 16px !important;
+  height: 16px !important;
+  border: 1px solid var(--accent-2) !important;
+  border-radius: 50% !important; 
+  background: transparent !important;
+  cursor: pointer !important;
+  position: relative !important;
+  vertical-align: middle !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+#torrents form[name="filter"] input[type="radio"]:checked {
+  background-color: var(--accent-2) !important;
+  box-shadow: 0 0 6px rgba(229, 69, 106, 0.4) !important;
+}
+
+#torrents form[name="filter"] input[type="radio"]:hover {
+  filter: brightness(1.15) !important;
+}
+
+#torrents .basic .submit span,
+#torrents .filter_torrents.basic .submit span,
+#torrents form[name="filter"].basic .submit span {
+  position: relative !important;
+  top: 0 !important;          
+  left: 0 !important;         
+  margin: 10px 0 10px 0 !important;
+  line-height: 30px !important;
+  height: 30px !important;
+  color: var(--ink-2) !important;
+  font-weight: 600 !important;
+}
+
+#torrents .filter_torrents.basic .submit {
+  clear: both !important;           
+  display: block !important;
+  width: 100% !important;
+
+  margin-top: 16px !important;      
+  padding-top: 8px !important;      
+  
+  
+}
+
+#torrents .filter_torrents.basic .submit > span {
+  float: left !important;
+  height: 30px !important;
+  line-height: 30px !important;
+  margin: 8px 0 10px 0 !important;   
+  white-space: nowrap !important;
+  color: var(--ink-2) !important;
+  font-weight: 600 !important;
+}
+
+#torrents .filter_torrents.basic .submit input[type="submit"],
+#torrents .filter_torrents.basic .submit input[type="button"] {
+  float: right !important;
+  margin: 8px 6px 10px 6px !important;  
+  height: 30px !important;
+  line-height: 30px !important;
+}
+
+#details .sigm img[alt="Seeders"],
+#details td.sign img[title="Seeders"],
+#details img[src*="seeders.png"] {
+  content: url("https://gazelle.games/static/brand/up.svg") !important;
+  width: 15px !important;
+  height: 15px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  filter: hue-rotate(70deg) brightness(1.2);
+}
+
+#details .sigm img[alt="Leechers"],
+#details td.sign img[title="Leechers"],
+#details img[src*="leechers.png"] {
+  content: url("https://gazelle.games/static/brand/down.svg") !important;
+  width: 15px !important;
+  height: 15px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  filter: hue-rotate(70deg) brightness(1.2);
+}
+
+#copyright p + p::before {
+  content: "Nightfall by Latigorangale";
+  display: block;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--ink-2);
+  opacity: .9;
+  margin-top: 4px;
+  padding-left: 15px;
+  background: url("https://gazelle.games/static/brand/gazelle.svg")
+              0 50% / 14px 14px no-repeat;
+}
+
+#announcement a:hover,
+#announcements a:hover {
+  color: var(--accent-2-bright) !important;
+}
+
+#header{
+  position: static !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0px !important;                 
+  padding-top: 8px !important;
+  background: transparent !important;
+}
+
+#menu,
+#searchbars,
+#userinfo {
+  background: none !important;
+  border: none !important;
+}
+
+#menu {
+    font-weight: 900 !important;
+    font-size: 1.6em !important;
+  box-shadow: none !important;
+}
+
+#menu ul li a:hover {
+color: var(--accent-2) !important;
+text-shadow: none !important;
+}
+
+#alerts{
+  order: 6 !important;                            
+  width: min(100%, var(--rail-width)) !important; 
+  align-self: center !important;
+  margin: 70px auto 0 !important;                 
+  background: none !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+  color: var(--ink) !important;
+  padding: 6px 10px !important;
+}
+
+#collectionscomplete,
+#userscomplete,
+#requestscomplete,
+#forumscomplete,
+#logscomplete,
+#torrentscomplete {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+}
+
+  html body #footer,
+  #content + #footer,
+  #footer {
+    position: static !important;
+    clear: both !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border-top: 1px solid var(--border) !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    margin-top: auto !important;
+  }
+
+  
+  #footer::before {
+    content: "" !important;
+    display: block !important;
+    height: 14px !important;            
+  }
+
+  
+  #footer > br,
+  #content + #footer > br {
+    display: none !important;
+  }
+
+  
+  #footer p,
+  #footer div {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  #footer p + p { margin-top: 4px !important; }
+
+  
+  #wrapper {
+    padding-bottom: 0 !important;
+  }
+
+  
+  #content { margin-bottom: 0 !important; }
+
+#userinfo #userinfo_username, #userinfo #userinfo_stats, #userinfo #userinfo_minor {
+gap: 8px;
+}
+
+.r09, .r10, .r20, .r50, .r99 {
+color: var(--darkGreen);
+color: hsl(0, 0%, 100%);
+}
+
+#nav_donate {
+margin-bottom: 0px;
+margin-top: 0px;
+margin-left: auto !important; 
+}
+
+#nav_donate > strong:nth-child(1) > a:nth-child(1) {
+margin-left: 0px;
+}
+
+#nav_donate span,
+.donateico span,
+#nav_donate [class^="r0"],
+#nav_donate [class^="r1"],
+#nav_donate [class^="r2"],
+#nav_donate [class^="r5"],
+#nav_donate [class^="r9"] {
+  color: #fff !important;
+}
+
+.donateico a {
+color: #fff;
+}
+
+.donateico a:hover {
+color: var(--accent-2);
+}
+
+#userinfo_username {
+left: 0px;
+right: 0px;
+}
+
+.forumstat {
+display: none;
+}
+
+.colhead, .colhead_dark, .head,
+#user .head, 
+#wiki .head{
+width: 93%;
+height: 25px;
+box-shadow: 0px 3px 5px #fff0;
+}
+
+.sidebar #slides ul a {
+width: 323px;
+}
+
+li.center:nth-child(1) > a:nth-child(1) {
+margin-left: 0px;
+}
+
+li.center:nth-child(2) > a:nth-child(2) {
+margin-left: 0px;
+}
+
+#userinfo #userinfo_username, #userinfo #userinfo_stats, #userinfo #userinfo_minor {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.global_buffs .color_yellow .fa,
+.items_style .global_buffs {
+  color: var(--accent-2) !important;
+
+}
+
+.items_style .global_buffs, .global_buffs {
+  background-color: #0e0f1200;
+  box-shadow: 0 0 0px rgba(154, 123, 255, 0) !important;
+}
+
+#nav_userinfo {
+margin-left: 10px !important;
+}
+
+#nav_userinfo.welcome,
+#nav_userinfo {
+  position: relative !important;
+  font-size: 0 !important; 
+}
+
+#nav_userinfo.welcome::before,
+#nav_userinfo::before {
+  content: "Hi, " !important;
+  display: inline !important;
+  font-size: 13px !important;
+  vertical-align: baseline !important;
+}
+
+#nav_userinfo.welcome .username,
+#nav_userinfo.welcome a,
+#nav_userinfo.welcome *,
+#nav_userinfo .username,
+#nav_userinfo a,
+#nav_userinfo * {
+  font-size: 13px !important;
+  display: inline !important;
+}
+
+#userinfo #userinfo_username {
+  position: relative !important; 
+}
+
+#userinfo .sub,
+#userinfo #us_pop {
+  display: none !important; 
+  visibility: hidden !important;
+}
+
+#userinfo #userinfo_username:has(#nav_userinfo:hover) .sub span,
+#userinfo #userinfo_username:has(#nav_userinfo:hover) #us_pop span,
+#userinfo #userinfo_username:has(#nav_userinfo:hover) .sub > span,
+#userinfo #userinfo_username:has(#nav_userinfo:hover) #us_pop > span,
+#userinfo #userinfo_username .sub:hover span,
+#userinfo #userinfo_username #us_pop:hover span {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#userinfo #userinfo_username:has(#nav_userinfo:hover) #nav_userinfo::after,
+#userinfo #userinfo_username:has(#us_pop:hover) #nav_userinfo::after,
+#userinfo #userinfo_username:has(.sub:hover) #nav_userinfo::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 100% !important;
+  left: 0px !important;
+  width: 150px !important;
+  min-height: calc(250px + 20px) !important; 
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow) !important;
+  z-index: 998 !important;
+  pointer-events: auto !important; 
+}
+
+#userinfo #userinfo_username:has(#nav_userinfo:hover) .sub,
+#userinfo #userinfo_username:has(#nav_userinfo:hover) #us_pop,
+#userinfo #userinfo_username .sub:hover,
+#userinfo #userinfo_username #us_pop:hover {
+  display: block !important;
+  position: absolute !important;
+  top: calc(100% - 8px) !important; 
+  left: 60px !important; 
+  width: calc(150px - 16px) !important; 
+  background: transparent !important;
+  border: none !important;
+  padding: 8px 0 !important; 
+  margin: 0 !important;
+  z-index: 1000 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.sub[id^="us_"],
+div.sub[id^="us_"] {
+  display: none !important;
+}
+
+body #content .sub[id^="us_"][style*="visibility: visible"],
+body #content .sub[id^="us_"][style*="visibility:visible"],
+body #content div.sub[id^="us_"][style*="visibility: visible"],
+body #content div.sub[id^="us_"][style*="visibility:visible"],
+body .sub[id^="us_"][style*="visibility: visible"],
+body .sub[id^="us_"][style*="visibility:visible"] {
+  display: block !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 10000 !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  height: 0 !important;
+  overflow: visible !important;
+  width: 200px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.5)) !important;
+}
+
+body #content .sub[id^="us_"][style*="visibility: visible"]::before,
+body #content .sub[id^="us_"][style*="visibility:visible"]::before,
+body #content div.sub[id^="us_"][style*="visibility: visible"]::before,
+body #content div.sub[id^="us_"][style*="visibility:visible"]::before {
+  content: none !important;
+  display: none !important;
+}
+
+body #content .sub[id^="us_"][style*="visibility: visible"] span,
+body #content .sub[id^="us_"][style*="visibility:visible"] span,
+body .sub[id^="us_"][style*="visibility: visible"] span,
+body .sub[id^="us_"][style*="visibility:visible"] span {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 1 !important;
+  color: var(--ink) !important;
+  background: var(--card) !important;
+  width: 200px !important;
+  box-sizing: border-box !important;
+  padding: 8px 12px !important;
+  margin: 0 !important;
+  border-left: 1px solid var(--border) !important;
+  border-right: 1px solid var(--border) !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+  transition: background-color 0.2s ease !important;
+}
+
+body #content .sub[id^="us_"][style*="visibility: visible"] span:first-child,
+body #content .sub[id^="us_"][style*="visibility:visible"] span:first-child {
+  border-top: 1px solid var(--border) !important;
+  border-radius: 8px 8px 0 0 !important;
+  padding-top: 12px !important;
+}
+
+body #content .sub[id^="us_"][style*="visibility: visible"] span:last-child,
+body #content .sub[id^="us_"][style*="visibility:visible"] span:last-child {
+  border-bottom: 1px solid var(--border) !important;
+  border-radius: 0 0 8px 8px !important;
+  padding-bottom: 12px !important;
+}
+
+#us_pop span {
+  display: block !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  color: var(--ink) !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  padding: 8px 12px !important;
+  margin: 2px 0 !important;
+  border: none !important;
+  border-radius: 4px !important;
+  transition: background-color 0.2s ease !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.sub hr,
+#us_pop hr,
+.sub span hr,
+#us_pop span hr {
+  display: none !important;
+  border: none !important;
+}
+
+body #content .sub[id^="us_"][style*="visibility: visible"] span a,
+body #content .sub[id^="us_"][style*="visibility:visible"] span a,
+body .sub[id^="us_"][style*="visibility: visible"] span a,
+body .sub[id^="us_"][style*="visibility:visible"] span a,
+#us_pop span a {
+  display: block !important;
+  width: 100% !important;
+  color: var(--ink) !important;
+  text-decoration: none !important;
+  padding: 0 !important;
+}
+
+body #content .sub[id^="us_"][style*="visibility: visible"] span:hover,
+body #content .sub[id^="us_"][style*="visibility:visible"] span:hover,
+body #content .sub[id^="us_"][style*="visibility: visible"] span:hover a,
+body #content .sub[id^="us_"][style*="visibility:visible"] span:hover a,
+#us_pop span:hover,
+#us_pop span a:hover {
+  background-color: var(--card-2) !important;
+  color: var(--accent-2) !important;
+}
+
+tr:hover td {
+  background: rgba(229,69,106,.06) !important;
+}
+
+#forums table.border .cat_list td[colspan="5"] {
+  background-color: var(--card); 
+  height: 25px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+
+  width: 16px !important;
+  height: 16px !important;
+  border: 1px solid var(--accent-2) !important;
+  border-radius: 4px !important; 
+  background: transparent !important;
+  cursor: pointer !important;
+  position: relative !important;
+  vertical-align: middle !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+input[type="radio"] {
+  border-radius: 50% !important;
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  background-color: var(--accent-2) !important;
+  border-color: var(--accent-2) !important;
+  box-shadow: 0 0 6px rgba(229, 69, 106, 0.4) !important;
+}
+
+input[type="checkbox"]:hover,
+input[type="radio"]:hover {
+  filter: brightness(1.15) !important;
+}
+
+input[type="checkbox"]:checked::after {
+  content: none !important;
+  color: white !important;
+  font-size: 12px !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -52%) !important;
+}
+
+  .items_style #searchbars ul li input, .items_style input {
+    background-color: var(--card) !important; 
+    color: var(--ink) !important;
+  }
+
+.bbbutt {
+  background-color: var(--card) !important; 
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 4px !important;
+}
+
+.bbbutt li {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.bbbutt li select {
+  background-color: var(--card) !important; 
+  color: var(--ink) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 4px !important;
+  margin: 0 2px !important;
+  padding: 4px 8px !important;
+  height: auto !important;
+  min-height: 28px !important;
+}
+
+.bbbutt li a,
+.bbbutt li button {
+  color: var(--ink) !important;
+  background-color: var(--card-2) !important;
+  border: 1px solid transparent !important;
+  border-radius: 4px !important;
+  
+  margin: 0 2px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.bbbutt li a:hover,
+.bbbutt li button:hover {
+  background-color: var(--card-2) !important;
+  border-color: var(--border) !important;
+  color: var(--accent-2) !important;
+}
+
+blockquote,
+pre {
+  background: transparent !important;         
+  border: 1px solid var(--accent-2) !important; 
+  border-radius: 6px !important;              
+  color: var(--accent-2) !important;
+  padding: 15px !important;
+  width: 75% !important;
+  margin: 0 auto -5px auto !important;
+}
+
+.profile .box_main_info {
+  background: none;
+}
+
+#requests #otherop .label {
+  background: none;
+}
+
+select, #requests form[name="filter"] textarea {
+  width: 100% !important;
+  min-width: 100px !important;
+  max-width: 150px !important;
+  min-height: 30px !important;
+  background: var(--card) !important; 
+  color: var(--ink) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  padding: 6px 8px !important;
+  box-sizing: border-box !important;
+  font-family: var(--font) !important;
+  font-size: 14px !important;
+}
+
+#collections h2:nth-of-type(1),
+#requests h2 {
+  border-bottom: 0px solid #c6e6f6 !important;
+  width: 97%;
+  display: inline-block;
+  color: var(--lightBlue);
+}
+
+#collections .center input[type="checkbox"] {
+  height: 16px !important;
+  padding: 0;
+  margin: 0;
+}
+
+code {
+  background: none;
+  padding: 1px 5px;
+}
+
+#userinfo_stats {
+  display: none !important;
+}
+
+#items_navigation {
+  background: none !important;
+}
+
+.freeleech_shop_main a, .global_buffs_shop_main a {
+  color: var(--accent);
+}
+
+  #shop input, #shop select, #shop li button, .inventory input, .inventory select, .inventory li button {
+    background-color: var(--accent-2);
+    color: #fff;
+    margin: 5px;
+    padding: 2px;
+    height: auto;
+  }
+
+input::placeholder {
+  color: var(--ink-dim);
+  opacity: 1;
+}
+
+#crafting_panel #slots_panel {
+  background: none !important;
+}
+#crafting_recipes li.item_li {
+  background: none !important;
+}
+#shop li.item_type_0 #clickable,
+#shop li.item_type_2 #clickable,
+#shop li.item_type_3 #clickable,
+#shop li.item_type_4 #clickable,
+#shop li.item_type_5 #clickable {
+  background: none !important;
+}
+
+#crafting_panel .ui-widget-content {
+  background: #e5456a00 !important;           
+  border: 1px solid var(--accent-2) !important; 
+}
+
+#crafting_panel .item, #equipment .item, #trading_panel .item, #backpack .item {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border: 0px solid #0000;
+  background-color: #1c1c1c00;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+#crafting_panel .itemslot .item {
+  width: 100px;
+  height: 100px;
+  border-width: 2px;
+  margin: 1px;
+}
+
+#crafting_panel #items {
+background-color: var(--card-2); 
+}
+
+#torrents .groupoptions {
+  background: url("https://gazelle.games/static/brand/options_1.png") no-repeat right top !important;
+}
+
+#us_pop > span:nth-child(1) > a:nth-child(1) {
+margin-top: 20px;
+}
+
+.groupoptions a, #userinfo_minor a{
+  padding:4px 10px;background:var(--card-2);
+}
+
+#torrents .groupoptions:hover a{background:var(--card-2)} 
+#userinfo_minor li a:hover, #torrents .groupoptions:hover a:hover{
+  background:var(--accent-2);color:#fff;text-decoration:none
+}
+
+img[src*="static/styles/game_room/images/seeders.png"] {
+  content: url("https://gazelle.games/static/brand/up.png") !important;
+
+}
+
+img[src*="static/styles/game_room/images/leechers.png"] {
+  content: url("https://gazelle.games/static/brand/down_1.png") !important;
+
+}
+
+img[src*="static//common/thumbsup.png"],
+img[src*="static/common/thumbsup.png"] {
+  content: url("https://gazelle.games/static/brand/yes.png") !important;
+
+}
+
+img[src*="static/common/thumbsdown.png"] {
+  content: url("https://gazelle.games/static/brand/no.png") !important;
+
+}
+
+#torrents .sidebar .box {
+width: 320px;
+}
+
+#group_description > blockquote:nth-child(25) > div:nth-child(1) > strong:nth-child(1) > span:nth-child(1) {
+text-decoration: none;
+}
+
+#thumbsup,
+#upvote {
+  color: #48ff6a;
+}
+
+#thumbsdown,
+#downvote {
+  color: #ff4893;
+}
+
+#thumbsdown:has(img.desaturate) {
+  color: #7b7276 !important;
+}
+
+#thumbsup:has(img.desaturate) {
+  color: #7b7276 !important;
+}
+
+#sidebar_group_info > div:nth-child(1) {
+padding-top: 10px;
+padding-bottom: 10px;
+padding-left: 10px;
+padding-right: 10px;
+}
+
+#sidebar_group_info {
+  overflow: visible !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#sidebar_group_info .body,
+#sidebar_group_info > div.body {
+  overflow: visible !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  white-space: normal !important;
+}
+
+#sidebar_group_info .body *,
+#sidebar_group_info > div.body *,
+#sidebar_group_info .body em,
+#sidebar_group_info > div.body em,
+#sidebar_group_info .body a,
+#sidebar_group_info > div.body a {
+  max-width: 100% !important;
+  overflow: visible !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  text-overflow: clip !important;
+}
+
+#group_tags {
+  padding: 12px 10px !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  color: var(--ink) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  overflow: visible !important;
+  min-width: 0 !important;
+  white-space: normal !important;
+}
+
+.theme_collections > div:nth-child(1) {
+padding-left: 10px;
+padding-top: 10px;
+padding-bottom: 10px;
+padding-right: 10px;
+}
+
+.box_game_ratings > div:nth-child(2) {
+padding-top: 10px;
+padding-left: 10px;
+padding-bottom: 10px;
+padding-right: 10px;
+text-align: center !important; 
+}
+
+.box_game_ratings .ratings,
+.box_game_ratings .ratings.ign,
+.box_game_ratings .ratings.gamespot,
+.box_game_ratings .ratings.meta {
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  font-size: 18px !important;
+  width: 100% !important;
+  line-height: 1.2 !important;
+  vertical-align: middle !important;
+}
+
+.box_game_ratings .ratings *,
+.box_game_ratings .ratings.ign *,
+.box_game_ratings .ratings.gamespot *,
+.box_game_ratings .ratings.meta *,
+.box_game_ratings .ratings span,
+.box_game_ratings .ratings.ign span,
+.box_game_ratings .ratings.gamespot span,
+.box_game_ratings .ratings.meta span {
+  font-size: 18px !important;
+  line-height: 1.2 !important;
+  vertical-align: middle !important;
+}
+
+#weblinksdiv {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 10px;
+}
+
+div.box:nth-child(9) {
+padding-top: 0px;
+padding-left: 0px;
+padding-right: 0px;
+padding-bottom: 0px;
+}
+
+div.box:nth-child(10) > div:nth-child(2) {
+padding-left: 10px;
+padding-top: 10px;
+padding-bottom: 10px;
+padding-right: 10px;
+}
+
+div.box:nth-child(11) > div:nth-child(2) {
+padding-top: 10px;
+padding-left: 10px;
+padding-bottom: 10px;
+padding-right: 10px;
+}
+
+div.box:nth-child(9) > div:nth-child(2) {
+padding-left: 10px;
+padding-top: 10px;
+padding-right: 10px;
+padding-bottom: 10px;
+}
+
+#add_tags_link {
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+td.sign:nth-child(6) > img:nth-child(1) {
+  margin-top: 2px;
+}
+
+ .series_12344 #userinfo #userinfo_username .donateico a,
+.series_12344 #menu ul a {
+      color: #fff !important;
+      text-transform: none;
+}
+
+.master_5154 #menu ul a,
+.master_29116 #userinfo #userinfo_username .donateico a,
+.master_29116 #menu ul a {
+      color: transparent;
+      padding: 5px 18px;
+      text-shadow: none !important;
+      background: #fff;
+    background-clip: border-box;
+      background-clip: text;
+    }
+
+.master_5154 #menu ul a,
+.master_29116 #menu ul a {
+      color: transparent;
+      padding: 5px 18px;
+      text-shadow: none !important;
+      background: #fff;
+    background-clip: border-box;
+      background-clip: text;
+    }
+
+    .master_5154 #menu ul a:hover {
+      color: #fff;
+    }
+
+.userratingdiv > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) {
+padding-left: 80px;
+}
+
+.userratingdiv > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) {
+padding-right: 80px;
+}
+
+.userreviews > table > tbody > tr > a:nth-child(3) {
+  padding-bottom:20px;
+  padding-left: 20px;
+}
+
+.userreviews > table:nth-child(1) {
+padding-right: 50px;
+}
+
+tbody[id^="edition_"], tbody[id*=" edition_"] {
+  line-height: 1em;
+  
+  display: table-row-group;
+}
+
+tbody[id^="edition_"][style*="display: none"],
+tbody[id*=" edition_"][style*="display: none"] {
+  display: none !important;
+}
+
+#userreviews .blockquote, pre {
+  background: transparent !important;
+  color: #fff !important;
+  padding: 15px !important;
+  width: 75% !important;
+  margin: 0 auto -5px auto !important;
+}
+
+#torrents td.label {
+  width: 150px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#items_navigation li#selected a {
+  font-weight: bold;
+  color: var(--accent-2);
+}
+
+  .items_style #items_list input, .items_style #items_list select, .items_style #items_list button {
+    font-family: roboto;
+    background-color: var(--accent-2);
+    color: #fff;
+    padding: 5px;
+  }
+
+#items_navigation li a:hover {
+  color: var(--accent-2);
+  text-decoration:  underline;
+}
+
+.item_li {
+padding-bottom: 20px;
+}
+
+.items_style {
+  left: 10px !important;
+  background-color: rgba(229,69,106,0) !important;
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+}
+
+.alertable {
+  position: fixed;
+  z-index: 9999;
+  top: 38vh;
+  left: calc(50% - 150px);
+  width: 300px;
+  color: #fff;
+  background: var(--darkBlue);
+  border-radius: 4px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.alertable-ok {
+  background: var(--accent-2);
+  border: solid 1px var(--accent-2);
+  font-family: inherit;
+  font-size: inherit;
+  color: white;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin-left: 4px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(229,69,106,.28);
+}
+
+.alertable-cancel {
+  border: solid 1px var(--accent-2);
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--accent-2);
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.spoilerbox {
+  background-color: #fff0;
+  border: 1px solid var(--accent-2);
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+img {
+  border-radius: 0px;
+}
+
+#torrents .forum_post .comment_rating {
+  border-top: 0px;
+}
+
+#content {
+
+  box-shadow: 0px 0px px var(--black);
+
+}
+
+form input {
+  max-width: 500px;
+}
+
+#forums .rowa td a,
+#forums .rowb td a {
+  color: #dcdcdc;
+  font-weight: 500;
+}
+
+form textarea, form input {
+   border: solid 1px var(--accent-2);
+}
+
+td.avatar {
+  background-color: transparent;
+  box-shadow: 0px 0px 2px var(--black);
+}
+
+tr.likes td {
+  text-align: left !important;
+  box-shadow: 0px 0px 2px var(--black);
+  background-color: var(--card); 
+  padding-left: 3px;
+}
+
+.likes > td { padding-left: 20px; }
+
+#quickreplybuttons{
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  gap:10px !important;              
+  text-align:initial !important;    
+}
+
+#quickreplybuttons input{
+  float:none !important;            
+  display:inline-block !important;
+  margin-top:10px !important;
+}
+
+:root {
+  --icon-size: 30px;
+}
+
+blockquote, pre {
+  filter: drop-shadow(2px 2px 3px #fff0);
+}
+
+.ios, .mac, .applebandaipippin, .appleii, .android, .dos, .windows, .xbox360, .xbox,
+.gameboy, .gameboyadvance, .gameboycolor, .nes, .nintendo64, .nintendo3ds,
+.newnintendo3ds, .nintendods, .nintendogamecube, .pokemonmini, .snes, .switch,
+.virtualboy, .wii, .wiiu, .playstation1, .playstation2, .playstation3, .playstation4,
+.playstation5, .playstationportable, .playstationvita, .dreamcast, .gamegear,
+.mastersystem, .megadrive, .pico, .saturn, .sg-1000, .atari2600, .atari5200,
+.atari7800, .atarijaguar, .atarilynx, .atarist, .amstradcpc, .bandaiwonderswan,
+.bandaiwonderswancolor, .commodore64, .commodore128, .commodoreamiga, .amigacd32,
+.commodoreplus-4, .commodorevic-20, .necpc-98, .necpc-fx, .necsupergrafx,
+.necturbografx-16, .zxspectrum, .msx, .msx2, .game\.com, .gizmondo, .v\.smile,
+.creativision, .boardgame, .cardgame, .miniaturewargames, .penandpaperrpg, .\33 do,
+.casioloopy, .casiopv-1000, .colecovision, .emersonarcadia2001, .entexadventurevision,
+.epochsupercasettevision, .fairchildchannelf, .funtechsuperacan, .gameparkgp32,
+.generalcomputervectrex, .interactivedvd, .linux, .hartunggamemaster,
+.magnavox-phillipsodyssey, .mattelintellivision, .memotechmtx, .milesgordonsamcoupe,
+.nokian-gage, .oculusquest, .ouya, .philipsvideopac\+, .philipscd-i, .phonepda,
+.rcastudioii, .sharpx1, .sharpx68000, .snkneogeo, .snkneogeopocket, .taitotypex,
+.tandycolorcomputer, .tangerineoric, .thomsonmo5, .watarasupervision, .retro-other {
+  height: var(--icon-size) !important;
+  width: var(--icon-size) !important;
+  display: inline-block !important;
+  vertical-align: top !important; 
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  margin: 0 !important; 
+}
+
+#torrents table.torrent_table td.cats_col .windows,
+#torrents table.torrent_table td.cats_col .ios,
+#torrents table.torrent_table td.cats_col .mac,
+#torrents table.torrent_table td.cats_col .android,
+#torrents table.torrent_table td.cats_col .xbox,
+#torrents table.torrent_table td.cats_col .xbox360,
+#torrents table.torrent_table td.cats_col [class*="playstation"],
+#torrents table.torrent_table td.cats_col [class*="nintendo"],
+#torrents table.torrent_table td.cats_col [class*="gameboy"],
+#torrents table.torrent_table td.cats_col [class*="atari"],
+#torrents table.torrent_table td.cats_col [class*="commodore"],
+#torrents table.torrent_table td.cats_col [class*="platform"],
+#torrents table.torrent_table td.cats_col .cats_ost,
+#torrents table.torrent_table td.cats_col .cats_ebook,
+#torrents table.torrent_table td.cats_col .cats_ebooks,
+#torrents table.torrent_table td .windows,
+#torrents table.torrent_table td .ios,
+#torrents table.torrent_table td .mac,
+#torrents table.torrent_table td .android,
+#torrents table.torrent_table td .xbox,
+#torrents table.torrent_table td .xbox360,
+#torrents table.torrent_table td [class*="playstation"],
+#torrents table.torrent_table td [class*="nintendo"],
+#torrents table.torrent_table td [class*="gameboy"],
+#torrents table.torrent_table td [class*="atari"],
+#torrents table.torrent_table td [class*="commodore"],
+#torrents table.torrent_table td [class*="platform"],
+#torrents table.torrent_table td .cats_ost,
+#torrents table.torrent_table td .cats_ebook,
+#torrents table.torrent_table td .cats_ebooks {
+  vertical-align: middle !important;
+  display: inline-block !important; 
+  line-height: normal !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  margin-right: 2px !important;
+  position: relative !important;
+  top: 0 !important;
+  height: var(--icon-size) !important; 
+  width: var(--icon-size) !important; 
+  background-size: contain !important; 
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+}
+
+.ios               { background-image: url("https://gazelle.games/static/brand/ios.svg") !important; }
+.mac               { background-image: url("https://gazelle.games/static/brand/mac.svg") !important; }           
+.android           { background-image: url("https://gazelle.games/static/brand/android_1.svg") !important; }
+.dos               { background-image: url("https://gazelle.games/static/brand/dos.svg") !important; }
+.windows           { background-image: url("https://gazelle.games/static/brand/windows.svg") !important; }
+.xbox360           { background-image: url("https://gazelle.games/static/brand/xbox360.svg") !important; }
+.xbox           { background-image: url("https://gazelle.games/static/brand/xbox.svg") !important; }
+
+.gameboy           { background-image: url("https://gazelle.games/static/brand/gameboy.svg") !important; }
+.gameboyadvance    { background-image: url("https://gazelle.games/static/brand/gameboyadvance.svg") !important; }
+.gameboycolor      { background-image: url("https://gazelle.games/static/brand/gameboycolor.svg") !important; }
+.nes               { background-image: url("https://gazelle.games/static/brand/nes.svg") !important; }
+.nintendo64        { background-image: url("https://gazelle.games/static/brand/n64.svg") !important; }
+.nintendo3ds       { background-image: url("https://gazelle.games/static/brand/3ds.svg") !important; }
+.newnintendo3ds    { background-image: url("https://gazelle.games/static/brand/n3ds.svg") !important; }
+.nintendods        { background-image: url("https://gazelle.games/static/brand/ds.svg") !important; }
+.nintendogamecube  { background-image: url("https://gazelle.games/static/brand/gamecube.svg") !important; }
+.pokemonmini       { background-image: url("https://gazelle.games/static/brand/pokemonmini.svg") !important; }
+.snes              { background-image: url("https://gazelle.games/static/brand/snes.svg") !important; }
+.switch            { background-image: url("https://gazelle.games/static/brand/switch.svg") !important; }
+.virtualboy        { background-image: url("https://gazelle.games/static/brand/virtualboy.svg") !important; }
+.wii               { background-image: url("https://gazelle.games/static/brand/wii.svg") !important; }
+.wiiu              { background-image: url("https://gazelle.games/static/brand/wiiu.svg") !important; }
+
+.playstation1      { background-image: url("https://gazelle.games/static/brand/ps1.svg") !important; }
+.playstation2      { background-image: url("https://gazelle.games/static/brand/ps2.svg") !important; }
+.playstation3      { background-image: url("https://gazelle.games/static/brand/ps3.svg") !important; }
+.playstation4      { background-image: url("https://gazelle.games/static/brand/ps4.svg") !important; }
+.playstation5      { background-image: url("https://gazelle.games/static/brand/ps5.svg") !important; }
+.playstationportable{ background-image: url("https://gazelle.games/static/brand/psp.svg") !important; }
+.playstationvita   { background-image: url("https://gazelle.games/static/brand/psv.svg") !important; }
+
+.dreamcast         { background-image: url("https://gazelle.games/static/brand/dreamcast.svg") !important; }
+.gamegear          { background-image: url("https://gazelle.games/static/brand/gamegear.svg") !important; }
+.mastersystem      { background-image: url("https://gazelle.games/static/brand/mastersystem.svg") !important; }
+.megadrive         { background-image: url("https://gazelle.games/static/brand/megadrive.svg") !important; }
+.pico              { background-image: url("https://gazelle.games/static/brand/pico.svg") !important; }
+.saturn            { background-image: url("https://gazelle.games/static/brand/saturn.svg") !important; }
+.sg-1000           { background-image: url("https://gazelle.games/static/brand/sg1000.svg") !important; }
+
+.atari2600         { background-image: url("https://gazelle.games/static/brand/atari2600.svg") !important; }
+.atari5200         { background-image: url("https://gazelle.games/static/brand/atari520.svg") !important; }   
+.atari7800         { background-image: url("https://gazelle.games/static/brand/atari7800.svg") !important; }
+.atarijaguar       { background-image: url("https://gazelle.games/static/brand/jaguar.svg") !important; }
+.atarilynx         { background-image: url("https://gazelle.games/static/brand/lynx.svg") !important; }
+.atarist           { background-image: url("https://gazelle.games/static/brand/atarist.svg") !important; }
+
+.amstradcpc        { background-image: url("https://gazelle.games/static/brand/amstrad.svg") !important; }
+.zxspectrum        { background-image: url("https://gazelle.games/static/brand/sinclair.svg") !important; }
+.msx               { background-image: url("https://gazelle.games/static/brand/msx.svg") !important; }
+.msx2              { background-image: url("https://gazelle.games/static/brand/msx2.svg") !important; }
+
+.commodore64       { background-image: url("https://gazelle.games/static/brand/c64.svg") !important; }
+.commodore128      { background-image: url("https://gazelle.games/static/brand/c128.svg") !important; }
+.commodoreamiga    { background-image: url("https://gazelle.games/static/brand/amiga.svg") !important; }
+.amigacd32         { background-image: url("https://gazelle.games/static/brand/amiga32.svg") !important; }
+.commodoreplus-4   { background-image: url("https://gazelle.games/static/brand/plus4.svg") !important; }
+.commodorevic-20   { background-image: url("https://gazelle.games/static/brand/vic20.svg") !important; }
+
+.necpc-98          { background-image: url("https://gazelle.games/static/brand/pc98.svg") !important; }
+.necpc-fx          { background-image: url("https://gazelle.games/static/brand/pcfx.svg") !important; }
+.necsupergrafx     { background-image: url("https://gazelle.games/static/brand/supergrafx.svg") !important; }
+.necturbografx-16  { background-image: url("https://gazelle.games/static/brand/turbografx.svg") !important; }
+
+.bandaiwonderswan      { background-image: url("https://gazelle.games/static/brand/swan.svg") !important; }
+.bandaiwonderswancolor { background-image: url("https://gazelle.games/static/brand/swancolor.svg") !important; }
+.game\.com             { background-image: url("https://gazelle.games/static/brand/gamecom.svg") !important; }
+.gizmondo              { background-image: url("https://gazelle.games/static/brand/gizmondo.svg") !important; }
+.v\.smile              { background-image: url("https://gazelle.games/static/brand/vsmile.svg") !important; }
+
+.boardgame         { background-image: url("https://gazelle.games/static/brand/board.svg") !important; }
+.cardgame          { background-image: url("https://gazelle.games/static/brand/card.svg") !important; }
+.miniaturewargames { background-image: url("https://gazelle.games/static/brand/miniature.svg") !important; }
+.penandpaperrpg    { background-image: url("https://gazelle.games/static/brand/rpg.svg") !important; }
+
+.\33 do                { background-image: url("https://gazelle.games/static/brand/3do.svg") !important; }
+.casioloopy            { background-image: url("https://gazelle.games/static/brand/loopy.svg") !important; }
+.casiopv-1000          { background-image: url("https://gazelle.games/static/brand/pv1000.svg") !important; }
+.colecovision          { background-image: url("https://gazelle.games/static/brand/coleco.svg") !important; }
+.emersonarcadia2001    { background-image: url("https://gazelle.games/static/brand/arcadia.svg") !important; }
+.entexadventurevision  { background-image: url("https://gazelle.games/static/brand/adventure.svg") !important; }
+.epochsupercasettevision{ background-image: url("https://gazelle.games/static/brand/epoch.svg") !important; }
+.fairchildchannelf     { background-image: url("https://gazelle.games/static/brand/fairchild.svg") !important; }
+.funtechsuperacan      { background-image: url("https://gazelle.games/static/brand/acan.svg") !important; }
+
+.gameparkgp32          { background-image: url("https://gazelle.games/static/brand/gp32.svg") !important; }
+.generalcomputervectrex{ background-image: url("https://gazelle.games/static/brand/vectrex.svg") !important; }
+.interactivedvd        { background-image: url("https://gazelle.games/static/brand/dvd.svg") !important; }
+.linux                 { background-image: url("https://gazelle.games/static/brand/linux_1.svg") !important; }
+.hartunggamemaster     { background-image: url("https://gazelle.games/static/brand/gamemaster.svg") !important; }
+.magnavox-phillipsodyssey { background-image: url("https://gazelle.games/static/brand/odyssey.svg") !important; }
+.mattelintellivision   { background-image: url("https://gazelle.games/static/brand/intellivision.svg") !important; }
+
+.memotechmtx           { background-image: url("https://gazelle.games/static/brand/mtx.svg") !important; }
+.milesgordonsamcoupe   { background-image: url("https://gazelle.games/static/brand/sam.svg") !important; }
+.nokian-gage           { background-image: url("https://gazelle.games/static/brand/nokia.svg") !important; }
+.oculusquest           { background-image: url("https://gazelle.games/static/brand/oculus.svg") !important; }
+.ouya                  { background-image: url("https://gazelle.games/static/brand/ouya.svg") !important; }
+.philipscd-i           { background-image: url("https://gazelle.games/static/brand/cdi.svg") !important; }
+.philipsvideopac\+     { background-image: url("https://gazelle.games/static/brand/odyssey.svg") !important; }  
+
+.phonepda              { background-image: url("https://gazelle.games/static/brand/pds.svg") !important; }       
+.rcastudioii           { background-image: url("https://gazelle.games/static/brand/rca.svg") !important; }
+.sharpx1               { background-image: url("https://gazelle.games/static/brand/x1.svg") !important; }
+.sharpx68000           { background-image: url("https://gazelle.games/static/brand/x68000.svg") !important; }
+.snkneogeo             { background-image: url("https://gazelle.games/static/brand/geo.svg") !important; }
+.snkneogeopocket       { background-image: url("https://gazelle.games/static/brand/geopocket.svg") !important; }
+.taitotypex            { background-image: url("https://gazelle.games/static/brand/taito.svg") !important; }
+.tandycolorcomputer    { background-image: url("https://gazelle.games/static/brand/tcc.svg") !important; }
+.tangerineoric         { background-image: url("https://gazelle.games/static/brand/oric.svg") !important; }
+.thomsonmo5            { background-image: url("https://gazelle.games/static/brand/mo5.svg") !important; }
+.watarasupervision     { background-image: url("https://gazelle.games/static/brand/supervision.svg") !important; }
+.retro-other           { background-image: url("https://gazelle.games/static/brand/retro.svg") !important; }
+
+.appleii               { background-image: url("https://gazelle.games/static/brand/apple2.svg") !important; }
+.applebandaipippin     { background-image: url("https://gazelle.games/static/brand/pippin.svg") !important; }
+
+.creativision          { background-image: url("https://gazelle.games/static/brand/creativision.svg") !important; }
+.colecovision          { background-image: url("https://gazelle.games/static/brand/coleco.svg") !important; }
+
+.Amazon, .Bandcamp, .BoardGameGeek, .Desura, .Discogs, .DriveThruRPG, .EpicGames,
+.GameFAQs, .GamesWebsite, .Giantbomb, .Goodreads, .GOG, .GooglePlay, .GooglePlayBooks,
+.HowLongToBeat, .HumbleBundle, .Itch, .iTunes, .MobyGames, .MusicBrainz, .NexusMods,
+.Nintendo, .Oculus, .Origin, .Ouya, .PCGamingWiki, .PSN, .RPGGeek, .RPGnet, .Steam,
+.VGMdb, .VNDB, .Wikipedia, .XboxStore {
+  display: inline-block !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+}
+
+.Amazon         { background-image: url("https://gazelle.games/static/brand/amazon.png") !important; }
+.Bandcamp       { background-image: url("https://gazelle.games/static/brand/bandcamp.png") !important; }
+.BoardGameGeek  { background-image: url("https://gazelle.games/static/brand/boardgamegeek.png") !important; }
+.Desura         { background-image: url("https://gazelle.games/static/brand/desura.png") !important; }
+
+.Discogs        { background-image: url("https://gazelle.games/static/brand/dicogs.png") !important; }
+
+.DriveThruRPG   { background-image: url("https://gazelle.games/static/brand/drivethrurpg.png") !important; }
+.EpicGames      { background-image: url("https://gazelle.games/static/brand/epic%20games.png") !important; }
+.GameFAQs       { background-image: url("https://gazelle.games/static/brand/gamfaqs.png") !important; } 
+.GamesWebsite   { background-image: url("https://gazelle.games/static/brand/internet.png") !important; } 
+.Giantbomb      { background-image: url("https://gazelle.games/static/brand/giantbomb.png") !important; } 
+.Goodreads      { background-image: url("https://gazelle.games/static/brand/goodreads.png") !important; }
+.GOG            { background-image: url("https://gazelle.games/static/brand/gogcom.png") !important; }
+.GooglePlay     { background-image: url("https://gazelle.games/static/brand/googleplay.png") !important; }
+.GooglePlayBooks{ background-image: url("https://gazelle.games/static/brand/googlebooks.png") !important; }
+.HowLongToBeat  { background-image: url("https://gazelle.games/static/brand/howlongtobeat.png") !important; }
+.HumbleBundle   { background-image: url("https://gazelle.games/static/brand/humblebundle.png") !important; }
+.Itch           { background-image: url("https://gazelle.games/static/brand/itch.png") !important; }
+.iTunes         { background-image: url("https://gazelle.games/static/brand/itunes.png") !important; }
+.MobyGames      { background-image: url("https://gazelle.games/static/brand/mobygames.png") !important; }
+.MusicBrainz    { background-image: url("https://gazelle.games/static/brand/musicbrainz.png") !important; }
+.NexusMods      { background-image: url("https://gazelle.games/static/brand/nexus.png") !important; }
+.Nintendo       { background-image: url("https://gazelle.games/static/brand/nintendobutton.png") !important; }
+.Oculus         { background-image: url("https://gazelle.games/static/brand/oculusbutton.png") !important; }
+.Origin         { background-image: url("https://gazelle.games/static/brand/origin.png") !important; }
+.Ouya           { background-image: url("https://gazelle.games/static/brand/ouyabutton.png") !important; }
+.PCGamingWiki   { background-image: url("https://gazelle.games/static/brand/pcwiki.png") !important; }
+.PSN            { background-image: url("https://gazelle.games/static/brand/playstationnetwork.png") !important; }
+.RPGGeek        { background-image: url("https://gazelle.games/static/brand/rpg_1.png") !important; } 
+.RPGnet         { background-image: url("https://gazelle.games/static/brand/rpgnet.png") !important; }
+.Steam          { background-image: url("https://gazelle.games/static/brand/steam.png") !important; }
+.VGMdb          { background-image: url("https://gazelle.games/static/brand/vgmdb.png") !important; }
+.VNDB           { background-image: url("https://gazelle.games/static/brand/vndb.png") !important; }  
+.Wikipedia      { background-image: url("https://gazelle.games/static/brand/wikipedia.png") !important; }
+.XboxStore      { background-image: url("https://gazelle.games/static/brand/xboxstore.png") !important; }
+
+.tilt:hover {
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  -o-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  transform: rotate(0deg);
+}
+
+#center_poll {
+  height: 11px;
+  background: var(--accent-2) !important;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+#right_poll,
+#left_poll {
+  background: none;
+}
+
+#polcont .poll li:not(.graph) {
+  color: var(--accent-2) !important;
+}
+
+.sidebar .box ul li a.highlight,
+.sidebar .nobullet li a.highlight,
+.sidebar a[class*="cats_"].highlight,
+#sidebar_group_info a.highlight,
+.alt .r10, .alt .r20 {
+  color: var(--accent-2) !important;
+}
+
+@media screen and (min-width: 1400px) {
+#stats .stats li {
+width: 50%;
+width: 60%;
+}
+}
+
+#stats > ul:nth-child(2) > li:nth-child(14) {
+padding-bottom: 10px;
+}
+
+#index .head {
+  width: 100%;
+}
+
+.box_albumart:hover img:not(.cover_comparison) {
+  transform: none;
+}
+
+.box_albumart img {
+  min-width: 300px;
+  max-width: 300px;
+}
+
+.userreviews > table > tbody > tr > td:first-child {
+  padding-top: 5px;
+}
+
+#userinfo_minor a.highlight {
+  background-color: var(--accent-2);
+}
+
+.notification_bubble.hidden {
+  display: none !important;
+}
+.notification_bubble:not(.hidden) {
+  display: block;
+  position: absolute;
+  top: -8px;
+  left: 24px;
+  background-color: var(--accent-2);
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  border-radius: 50% !important; 
+  text-align: center !important;
+  line-height: 18px !important;
+  font-size: 11px !important;
+  color: white !important;
+  font-weight: bold !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.theme_collections {
+padding-top: 0px;
+padding-left: 10px;
+padding-right: 10px;
+}
+
+.ratings.ign {
+  background-image: url("https://gazelle.games/static/brand/ign_1.png") !important;
+}
+.ratings.gamespot {
+  background-image: url("https://gazelle.games/static/brand/gamespot_1.png") !important;
+}
+.ratings.meta {
+  background-image: url("https://gazelle.games/static/brand/metacritic_1.png") !important;
+}
+
+.ratings.ign,
+.ratings.meta,
+.ratings.gamespot,
+.ign, .meta, .gamespot,
+.tags_ratings .ign, .tags_ratings .meta, .tags_ratings .gamespot,
+#displayname .ign, #displayname .meta, #displayname .gamespot {
+  border-color: var(--accent-2) !important;
+  color: #fff !important;
+}
+.ign,
+.meta,
+.gamespot {
+  padding-bottom: 0px !important;
+  padding-top: 0px !important;
+}
+
+.ratings.ign,
+.ratings.meta,
+.ratings.gamespot {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
+
+.box_freeleech > div:nth-child(2) {
+padding-left: 10px;
+padding-bottom: 10px;
+padding-right: 10px;
+}
+
+.tag_type_header,
+#group_tags > div.tag_type_header {
+  font-size: 13px !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  color: var(--ink) !important;
+  display: block !important;
+  margin-top: 16px !important;
+  margin-bottom: 2px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 1.6 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+#group_tags > div:not(.tag_type_header):not(:has(.tag_type_header)):has(+ div.tag_type_header),
+#group_tags > div:not(.tag_type_header):not(:has(.tag_type_header)):has(+ div:has(.tag_type_header)),
+#group_tags > div:not(.tag_type_header):not(:has(.tag_type_header)):has(+ div:has(strong.tag_type_header)) {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+#group_tags > div.tag_type_header:first-child,
+.tag_type_header:first-child {
+  margin-top: 0 !important;
+}
+
+#group_tags > div.tag_type_header {
+  display: block !important;
+  width: 100% !important;
+}
+
+#group_tags > div:has(a[href*="vote"]):not(:has(strong.tag_type_header)),
+#group_tags > div:has(a[href*="remove"]):not(:has(strong.tag_type_header)) {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  gap: 10px !important;
+}
+
+#group_tags .group_tag > a:first-child,
+#group_tags .group_tag a:not([href*="vote"]):not([href*="remove"]):not([href*="add"]) {
+  font-size: 13px !important;
+  font-style: normal !important;
+  color: var(--ink) !important;
+  text-decoration: none !important;
+  line-height: 1.6 !important;
+  display: inline !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-overflow: clip !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: 0 0 auto !important;
+}
+
+#group_tags a:not([href*="vote"]):not([href*="remove"]):not([href*="add"]):hover,
+#group_tags .tags a:not([href*="vote"]):not([href*="remove"]):not([href*="add"]):hover {
+  color: var(--accent-2) !important;
+  text-decoration: underline !important;
+}
+
+.items_style #userinfo #userinfo_username .donateico a:hover {
+    color: #e5456a;
+  }
+
+#gallery-header, .gallery-item-title {
+  background-clip: border-box;
+  background-color: var(--card); 
+  background-image: none;
+}
+
+.wiki_index .wiki_article strong:hover {
+  filter: brightness(1) !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.wiki_index .wiki_article strong {
+  background-color: var( --darkBlue50) !important;
+  color: var(--white) !important;
+  font-size: 1em !important;
+  font-weight: 600 !important;
+  padding: 5px 8px !important;
+  border-radius: 5px !important;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  display: inline-block !important;
+}
+
+div.box:nth-child(4) {
+padding-left: 10px;
+padding-bottom: 10px;
+}
+
+#group_tags .tags,
+#sidebar_group_info .tags {
+  line-height: var(--icon-size) !important; 
+  font-size: 0 !important; 
+  display: block !important;
+}
+
+#sidebar_group_info .body,
+#sidebar_group_info > div.body,
+#sidebar_group_info strong,
+#sidebar_group_info em,
+#sidebar_group_info a:not([href*="vote"]):not([href*="remove"]):not([href*="add"]),
+#sidebar_group_info br {
+  font-size: 13px !important;
+  line-height: normal !important;
+}
+
+#group_tags .tags .cats_ost,
+#sidebar_group_info .tags .cats_ost,
+#group_tags .cats_ost,
+#sidebar_group_info .cats_ost,
+.sidebar .cats_ost,
+#content .cats_ost:not(#displayname .cats_ost):not(#torrents .cats_ost) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  line-height: var(--icon-size) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  margin-right: 2px !important;
+  margin-bottom: 0 !important;
+  height: var(--icon-size) !important;
+  width: var(--icon-size) !important;
+  background-size: contain !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+#group_tags .tags span,
+#group_tags .tags a,
+#sidebar_group_info .tags span,
+#sidebar_group_info .tags a {
+  font-size: 13px !important;
+}
+
+#torrents #displayname .tags,
+#torrents .tags {
+  margin-right: calc(18px + 8px + 10px) !important; 
+  max-width: calc(100% - 18px - 8px - 10px) !important; 
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-height: calc(1.4em * 3) !important; 
+}
+
+#torrents:not(:has(#sidebar_group_info)) table.torrent_table tr td:first-child:not(.edition_info),
+#torrents:not(:has(#sidebar_group_info)) table.torrent_table tr td:first-child:not(.edition_info) a:not(.show_torrents_link),
+#torrents:not(:has(#sidebar_group_info)) table.torrent_table tr td:first-child:not(.edition_info) em,
+#torrents:not(:has(#sidebar_group_info)) table.torrent_table tr td:first-child:not(.edition_info) i,
+#torrents:not(:has(#sidebar_group_info)) table.torrent_table tr td:first-child:not(.edition_info) *:not(.show_torrents_link),
+#torrents:not(:has(#sidebar_group_info)) table.torrent_table tr td:not(.edition_info) a.username,
+#torrents:not(:has(#sidebar_group_info)) table.torrent_table tr td:not(.edition_info) .username,
+#torrents:not(:has(#sidebar_group_info)) table.torrent_table tr td:not(.edition_info) em.username,
+#torrents:not(:has(#sidebar_group_info)) table.torrent_table tr td:not(.edition_info) i.username,
+#torrents:not(:has(#sidebar_group_info)) table.torrent_table tr td:not(.edition_info) em,
+#torrents:not(:has(#sidebar_group_info)) table.torrent_table tr td:not(.edition_info) i {
+  font-style: normal !important;
+  font-weight: normal !important;
+  text-decoration: none !important;
+  color: var(--ink) !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+body:has(#sidebar_group_info) #torrents table.torrent_table tbody tr td:first-child:not(.edition_info) {
+  line-height: 1.5 !important;
+  white-space: normal !important;
+  padding-left: 40px !important;
+}
+
+body:has(#sidebar_group_info) #torrents table.torrent_table tbody tr td:first-child > span:first-child {
+  display: block !important;
+  text-indent: -40px !important;
+  padding-left: 40px !important;
+  margin: 0 !important;
+}
+
+body:has(#sidebar_group_info) #torrents table.torrent_table tbody tr td:first-child > span:first-child > a:not([href*="download"]):not([href*="edit"]):not([href*="report"]):not([href*="torrents.php?torrentid"]),
+body:has(#sidebar_group_info) #torrents table.torrent_table tbody tr td:first-child > span:first-child a:not([href*="download"]):not([href*="edit"]):not([href*="report"]):not([href*="torrents.php?torrentid"]) {
+  max-width: none !important;
+  display: inline !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  text-indent: 0 !important;
+  padding-left: 0 !important;
+}
+
+#group_tags,
+#sidebar_group_info {
+  text-align: left !important; 
+}
+
+#group_tags > div.group_tag,
+#group_tags .group_tag {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  gap: 10px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 1.6 !important;
+  font-size: 13px !important;
+}
+
+#group_tags strong,
+#sidebar_group_info strong,
+#group_tags em,
+#sidebar_group_info em,
+#group_tags a:not([href*="vote"]):not([href*="remove"]):not([href*="add"]),
+#sidebar_group_info a:not([href*="vote"]):not([href*="remove"]):not([href*="add"]) {
+  text-align: left !important;
+  flex: 0 0 auto !important;
+}
+
+#group_tags .group_tag > span,
+#group_tags .group_tag span:last-of-type,
+#group_tags .group_tag a[href*="vote"],
+#group_tags .group_tag a[href*="remove"],
+#sidebar_group_info a[href*="vote"],
+#sidebar_group_info a[href*="remove"],
+#sidebar_group_info span:last-of-type {
+  margin-left: auto !important;
+  text-align: right !important;
+  flex: 0 0 auto !important;
+  
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+#displayname .tags_ratings,
+.tags_ratings {
+  font-size: 13px !important; 
+  line-height: normal !important;
+  display: block !important;
+}
+
+#displayname .tags_ratings *,
+.tags_ratings *,
+.ratings,
+.ratings.ign,
+.ratings.gamespot,
+.ratings.meta,
+.ratings * {
+  font-size: 13px !important; 
+  line-height: normal !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+.box_game_ratings .ratings.ign,
+.box_game_ratings .ratings.gamespot,
+.box_game_ratings .ratings.meta {
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  background-image: none !important; 
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important; 
+  text-align: center !important;
+  margin: 0 auto !important; 
+  padding-left: 0 !important; 
+  position: relative !important;
+}
+
+.box_game_ratings .ratings.ign::before,
+.box_game_ratings .ratings.gamespot::before,
+.box_game_ratings .ratings.meta::before {
+  content: "" !important;
+  width: 50px !important; 
+  height: 50px !important; 
+  background-size: contain !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important; 
+  vertical-align: middle !important;
+}
+
+.box_game_ratings .ratings.ign::before {
+  background-image: url("https://gazelle.games/static/brand/ign_1.png") !important;
+}
+
+.box_game_ratings .ratings.gamespot::before {
+  background-image: url("https://gazelle.games/static/brand/gamespot_1.png") !important;
+}
+
+.box_game_ratings .ratings.meta::before {
+  background-image: url("https://gazelle.games/static/brand/metacritic_1.png") !important;
+}
+
+.tags span,
+#group_tags span,
+.tags a,
+#group_tags a {
+  font-size: 13px !important; 
+  vertical-align: top !important;
+  line-height: var(--icon-size) !important;
+  display: inline-block !important;
+}
+
+#sidebar_group_info .body,
+#sidebar_group_info > div.body {
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  color: var(--ink) !important;
+  padding: 12px 10px !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  overflow: visible !important;
+  min-width: 0 !important;
+  white-space: normal !important;
+}
+
+#sidebar_group_info strong:not(.tags strong) {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--ink) !important;
+  display: block !important;
+  margin-top: 8px !important;
+  margin-bottom: 2px !important;
+  line-height: 1.6 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+#sidebar_group_info strong:not(.tags strong):first-child {
+  margin-top: 0 !important;
+}
+
+#sidebar_group_info em:not(.tags em),
+#sidebar_group_info a:not([href*="vote"]):not([href*="remove"]):not([href*="add"]):not(.tags a) {
+  font-size: 13px !important;
+  font-style: normal !important;
+  color: var(--ink) !important;
+  text-decoration: none !important;
+  line-height: 1.6 !important;
+  display: inline !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-overflow: clip !important;
+}
+
+#sidebar_group_info a:not([href*="vote"]):not([href*="remove"]):not([href*="add"]):not(.tags a):hover {
+  color: var(--accent-2) !important;
+  text-decoration: underline !important;
+}
+
+#sidebar_group_info br {
+  display: block !important;
+  margin: 2px 0 !important;
+  line-height: 1.6 !important;
+}
+
+#group_tags *,
+#group_tags > *,
+#sidebar_group_info .tags *,
+#sidebar_group_info .tags > * {
+  vertical-align: top !important;
+  line-height: var(--icon-size) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 2px !important; 
+}
+
+#group_tags .cats_ost,
+#sidebar_group_info .cats_ost,
+#group_tags .cats_ebook,
+#sidebar_group_info .cats_ebook,
+#group_tags .cats_ebooks,
+#sidebar_group_info .cats_ebooks,
+#group_tags [class*="cats_"],
+#sidebar_group_info [class*="cats_"],
+
+.sidebar .cats_ost:not(#torrents .cats_ost),
+.sidebar .cats_ebook:not(#torrents .cats_ebook),
+.sidebar .cats_ebooks:not(#torrents .cats_ebooks),
+.sidebar [class*="cats_"]:not(#torrents [class*="cats_"]),
+
+#content .cats_ost:not(#displayname .cats_ost):not(#torrents .cats_ost),
+#content .cats_ebook:not(#displayname .cats_ebook):not(#torrents .cats_ebook),
+#content .cats_ebooks:not(#displayname .cats_ebooks):not(#torrents .cats_ebooks),
+#content [class*="cats_"]:not(#displayname [class*="cats_"]):not(#torrents [class*="cats_"]) {
+  vertical-align: top !important;
+  display: inline-block !important;
+}
+
+.cats_ebook,
+.cats_ebooks {
+  line-height: var(--icon-size) !important;
+  vertical-align: top !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  margin-right: 2px !important; 
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+}
+
+#displayname .tags a,
+.tags a,
+#group_tags a {
+  line-height: 1.4 !important; 
+  vertical-align: baseline !important; 
+}
+
+  #shop_search {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0);
+    text-align: left;
+    width: 110%;
+    margin-left: -5%;
+  }
+
+.inventory input, .inventory select, .inventory li button {
+  background-color: var(--card) !important; 
+   color: #fff;
+}
+
+.inventory #items_list {
+  width: calc(100% - 240px) !important;
+}
+
+.inventory #content li.item_li {
+  background: rgba(0, 0, 0, .32);
+}
+
+#shop li.item_li {
+  background: rgba(0, 0, 0, 0.32) !important;
+}
+
+.inventory .save_message span,
+.inventory .save_message {
+  background: var(--card-2); 
+  border-bottom: 0px solid #c7c7c7;
+  filter: drop-shadow(1px 1px 3px #0000);
+}
+
+.inventory .save_message {
+  background: var(--card-2); 
+
+}
+
+#user .head {
+  width: 99%;
+  height: 25px;
+  box-shadow: 0px 3px 5px #fff0;
+}
+
+#header span.r50 {
+  display: none !important;
+}
+
+#platcheckbox td[colspan="5"] {
+  background-color: #0003;
+  height: 25px;
+}
+
+#upload td.label,
+#requests .main_column td.label,
+#user td.label {
+    width: 150px;
+    background-color: var(--card); 
+    border-collapse: collapse;
+    padding-left: 5px;
+    vertical-align: middle;
+}
+
+html, body { height: 100%; }
+#wrapper {                   
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#content {                  
+  flex: 1 0 auto !important;
+}
+#footer {                   
+  margin-top: auto !important;
+}
+
+.center {
+  text-align: left;
+}
+
+input {
+  background: var(--card) !important; 
+}
+
+#shop .items_style #items_list input, .items_style #items_list select, .items_style #items_list button {
+  font-family: roboto;
+  background-color: var(--card) !important; 
+  color: #fff;
+  padding: 5px;
+}
+
+#alerts {
+  border: none !important;
+}
+
+#shop #alerts {
+    top: 370px;
+    position: absolute;
+  }
+
+#collections .main_column {
+  float: left;
+  width: calc(100% - 340px);
+}
+
+#collection .main_column,
+#collections .main_column {
+padding-right: 0px;
+padding-left: 0px;
+}
+
+#shop .main_column {
+padding-right: 0px;
+padding-left: 0px;
+}
+
+#unchecked {
+color: #ee7085;
+}
+
+:root { --rail-width: 1240px; }  
+
+body#shop #menu,
+body#shop #searchbars,
+body#shop #announcement,
+body#shop #announcements,
+body#shop #userinfo {
+  max-width: var(--rail-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body#shop #content > .thin,
+body#shop .thin.items_shop {
+  max-width: var(--rail-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body#shop #items_navigation { width: 240px !important; }
+body#shop #items_list      { width: calc(100% - 270px) !important; }
+
+body#shop #menu,
+body#shop #searchbars,
+body#shop #announcement,
+body#shop #announcements,
+body#shop #userinfo {
+  width: min(100%, var(--rail-width)) !important;
+}
+
+:root { --rail-shop-width: 1240px; } 
+
+body#shop #menu,
+body#shop #searchbars,
+body#shop #announcement,
+body#shop #userinfo,
+body.items_style #menu,
+body.items_style #searchbars,
+body.items_style #announcement,
+body.items_style #userinfo{
+  max-width: var(--rail-shop-width) !important;
+  width: min(100%, var(--rail-shop-width)) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body#shop #content > .thin.items_shop{
+  max-width: var(--rail-shop-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body #wrapper #header {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: var(--rail-width, 1200px) !important; 
+    margin: 0 auto !important; 
+    height: auto !important;   
+    position: relative !important;
+    background: transparent !important;
+    padding-bottom: 20px !important;
+}
+
+body #wrapper #header #userinfo {
+    order: 1 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 40px !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+body #wrapper #header #userinfo #userinfo_minor {
+  order: 1 !important;
+  margin-right: 15px !important;
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+}
+
+body #wrapper #header #userinfo #userinfo_username {
+  order: 2 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 15px !important;
+  position: static !important;
+  margin: 0 !important;
+  margin-right: auto !important; 
+  flex: 1 1 auto !important; 
+  min-width: 0 !important; 
+}
+
+body #wrapper #header #userinfo #userinfo_username #nav_userinfo {
+  position: relative !important; 
+  order: 1 !important;
+  flex: 0 0 auto !important;
+}
+
+body #wrapper #header #userinfo #userinfo_username #nav_useredit,
+body #wrapper #header #userinfo #userinfo_username #nav_logout {
+  order: 2 !important;
+  flex: 0 0 auto !important;
+  margin-left: 0 !important;
+}
+
+body #wrapper #header #userinfo #userinfo_username .donateico,
+body #wrapper #header #userinfo .donateico,
+body #wrapper #header #userinfo #nav_donate {
+  order: 3 !important;
+  margin-left: auto !important; 
+  margin-right: 0 !important;
+  flex: 0 0 auto !important;
+  white-space: nowrap !important; 
+}
+
+body #wrapper #header #userinfo #nav_donate span,
+body #wrapper #header #userinfo .donateico span {
+  display: inline !important;
+  white-space: nowrap !important;
+}
+
+body #wrapper #header #logo {
+    order: 2 !important;
+    position: static !important;
+    margin: 10px auto !important;
+    width: 100% !important;
+    height: 120px !important; 
+    background-position: center !important;
+}
+
+body #wrapper #header #menu {
+    order: 3 !important;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-bottom: 5px !important;
+}
+
+body #wrapper #header #menu ul {
+    display: flex !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body #wrapper #header #searchbars {
+    order: 4 !important;
+    position: static !important;
+    width: 0% !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 5px 0 15px 0 !important;
+    padding: 0 !important;
+}
+
+body #wrapper #header #searchbars {
+    font-size: 0 !important;
+    color: transparent !important;
+}
+body #wrapper #header #searchbars ul {
+    font-size: 0 !important;
+    color: transparent !important;
+}
+
+body #wrapper #header #searchbars ul li,
+body #wrapper #header #searchbars ul li * {
+    font-size: 14px !important;
+}
+body #wrapper #header #searchbars ul li {
+    color: var(--ink) !important;
+}
+
+body #wrapper #header #searchbars::before,
+body #wrapper #header #searchbars::after,
+body #wrapper #header #searchbars ul::before,
+body #wrapper #header #searchbars ul::after {
+    display: none !important;
+    content: none !important;
+}
+
+body #wrapper #header #searchbars > *:not(ul),
+body #wrapper #header #searchbars label {
+    display: none !important;
+}
+
+body #wrapper #header #searchbars ul {
+    position: static !important; 
+    top: auto !important;
+    right: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important; 
+    gap: 6px !important;          
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+}
+
+body #wrapper #header #searchbars ul li {
+    float: none !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+body #wrapper #header #searchbars input[type="text"], 
+body #wrapper #header #searchbars input[type="search"] {
+    width: 110px !important; 
+    height: 34px !important;
+    background-color: var(--card) !important; 
+    border: 1px solid var(--border) !important; 
+    border-radius: 6px !important;
+    color: var(--ink) !important;
+    padding: 0 4px !important;
+    text-align: center !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.6) !important;
+    vertical-align: middle !important;
+}
+
+@media screen and (max-width: 1200px) {
+  body #wrapper #header #searchbars {
+    display: flex !important;
+    justify-content: center !important;
+    padding: 0 6px !important;
+  }
+  body #wrapper #header #searchbars ul {
+    flex-wrap: nowrap !important;
+    gap: 3px !important;
+    justify-content: center !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+  body #wrapper #header #searchbars ul li {
+    margin: 0 !important;
+  }
+  body #wrapper #header #searchbars .search_form {
+    gap: 3px !important;
+  }
+  body #wrapper #header #searchbars input[type="text"],
+  body #wrapper #header #searchbars input[type="search"] {
+    width: 68px !important;
+    min-width: 58px !important;
+  }
+  body #wrapper #header #searchbars ul li a,
+  body #wrapper #header #searchbars ul li button {
+    padding: 0 6px !important;
+    font-size: 0.85em !important;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  body #wrapper #header #searchbars input[type="text"],
+  body #wrapper #header #searchbars input[type="search"] {
+    width: 58px !important;
+    min-width: 50px !important;
+    font-size: 0.8em !important;
+  }
+  body #wrapper #header #searchbars ul {
+    gap: 2px !important;
+  }
+  body #wrapper #header #searchbars ul li a,
+  body #wrapper #header #searchbars ul li button {
+    padding: 0 4px !important;
+    font-size: 0.8em !important;
+  }
+}
+
+body #wrapper #header #announcement,
+body #wrapper #header #alerts {
+    order: 5 !important;
+    position: static !important; 
+    margin: 10px auto !important;
+    width: 100% !important;
+    top: auto !important;
+    left: auto !important;
+}
+
+body #wrapper #header #searchbars .autocomplete_list,
+body #wrapper #header #searchbars ul li ul {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    position: absolute !important; 
+    pointer-events: none !important;
+}
+
+body #wrapper #header #searchbars ul:hover,
+body #wrapper #header #searchbars form:hover,
+body #wrapper #header #searchbars li:hover {
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+body #wrapper #header #searchbars input:hover,
+body #wrapper #header #searchbars input:focus {
+    
+    border-width: 1px !important;
+    margin: 0 !important;
+    padding: 0 4px !important; 
+}
+
+body #wrapper #header #searchbars ul,
+body #wrapper #header #searchbars ul:hover {
+    height: auto !important;       
+    padding: 0 !important;         
+    margin: 15px auto 0 auto !important; 
+    background: transparent !important;
+    border: none !important;
+    position: relative !important; 
+    top: auto !important;
+    right: auto !important;
+    z-index: 1 !important;         
+}
+
+body #wrapper #header #searchbars ul li,
+body #wrapper #header #searchbars ul li:hover,
+body #wrapper #header #searchbars ul:hover li {
+    border: none !important;
+    background: transparent !important;
+    margin: 0 3px !important;      
+    padding: 0 !important;
+    display: block !important;     
+}
+
+.autocomplete_list,
+.autocomplete_list:hover {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+body #wrapper #header #menu,
+body #wrapper #header #menu ul {
+    width: 100% !important;
+    max-width: none !important; 
+    margin: 0 !important;
+    padding: 0 !important;
+    
+    
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    float: none !important;
+    background: transparent !important;
+}
+
+body #wrapper #header #menu a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;        
+    padding: 8px 15px !important;   
+    line-height: normal !important; 
+    border-radius: 10px !important; 
+}
+
+body #wrapper #header #menu li {
+    height: 40px !important;        
+    display: flex !important;
+    align-items: center !important;
+}
+
+.global_buffs,
+.items_style .global_buffs,
+body.items_style .global_buffs,
+body#shop .global_buffs,
+body#shop.items_style .global_buffs {
+    position: fixed !important;
+    top: 52px !important; 
+    left: auto !important;
+    right: 12px !important;
+    z-index: 10000 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 4px 8px !important;
+    font-size: 0.75em !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    background-color: rgba(10, 11, 15, 0.9) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;
+}
+
+.global_buffs .buff_text {
+    font-size: inherit !important;
+    color: var(--ink) !important;
+    white-space: nowrap !important;
+}
+
+body #wrapper #header #userinfo #userinfo_minor,
+body #wrapper #header #userinfo #userinfo_minor:hover,
+body.items_style #wrapper #header #userinfo #userinfo_minor,
+body.items_style #wrapper #header #userinfo #userinfo_minor:hover {
+  transform: translate(0, 0) !important;
+  transition: none !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  margin: 0 15px 0 0 !important;
+  padding: 0 !important;
+  background-position: center center !important;
+  background-size: contain !important;
+}
+
+body #wrapper #header #userinfo #userinfo_minor::before,
+body #wrapper #header #userinfo #userinfo_minor:hover::before,
+body.items_style #wrapper #header #userinfo #userinfo_minor::before,
+body.items_style #wrapper #header #userinfo #userinfo_minor:hover::before {
+  transform: translate(0, 0) !important;
+  transition: none !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 32px !important;
+  height: 32px !important;
+  background-position: center center !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
+body #wrapper #header #userinfo #userinfo_minor .notification_bubble,
+body #wrapper #header #userinfo #userinfo_minor:hover .notification_bubble,
+body.items_style #wrapper #header #userinfo #userinfo_minor .notification_bubble,
+body.items_style #wrapper #header #userinfo #userinfo_minor:hover .notification_bubble {
+  transform: translate(0, 0) !important;
+  transition: none !important;
+  position: absolute !important;
+  top: -8px !important;
+  left: 24px !important;
+  margin: 0 !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+@media screen and (min-width: 1100px) {
+  .items_style #userinfo #userinfo_username #us_pop span {
+  border-bottom: 1px solid #000 !important;
+  }
+  }
+
+  .freeleech_shop_main, .global_buffs_shop_main {
+    background: rgba(0, 0, 0, 0);
+    }
